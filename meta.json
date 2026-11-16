@@ -1,19 +1,76 @@
 {
   "flows": [
-    {"channel": "YouTube", "headline": "Close deals with SignNow, wherever they happen", "paywall_opens_on": "Yearly, after their first invite comes back “Your document has been signed!”", "note": "asks “What do you send for signature?” and names the paywall after it: “Get every sales contract signed from your phone”"},
-    {"channel": "Apple Ads", "term": "sign docs", "headline": "Sign your document in just a few taps", "paywall_opens_on": "Yearly, after they sign the Sample Document", "note": "trial timeline: Today, Day 6, Day 7"},
-    {"channel": "Apple Ads", "term": "agreement", "headline": "Get your agreement signed, legally binding", "paywall_opens_on": "Business · Yearly, after the signers and signing order are set", "note": "proof first: 7 000 000+ downloads and Barbara Cerullo’s review above the plans"}
+    {
+      "channel": "YouTube",
+      "headline": "Close deals with SignNow, wherever they happen",
+      "paywall_opens_on": "Yearly, after their first invite comes back “Your document has been signed!”",
+      "note": "asks “What do you send for signature?” and names the paywall after it: “Get every sales contract signed from your phone”"
+    },
+    {
+      "channel": "Apple Ads",
+      "term": "sign docs",
+      "headline": "Sign your document in just a few taps",
+      "paywall_opens_on": "Yearly, after they sign the Sample Document",
+      "note": "trial timeline: Today, Day 6, Day 7"
+    },
+    {
+      "channel": "Apple Ads",
+      "term": "agreement",
+      "headline": "Get your agreement signed, legally binding",
+      "paywall_opens_on": "Business · Yearly, after the signers and signing order are set",
+      "note": "proof first: 7 000 000+ downloads and Barbara Cerullo’s review above the plans"
+    }
   ],
-  "prices": {"yearly": "$95.99", "monthly": "$19.99", "trial": "7 days", "source": "US App Store listing, In-App Purchases (“SignNow Business, free trial”, “signNow Business Monthly”)"},
-  "today": {"text": "every install creates an account, verifies its email and meets the same “Upgrade Your Plan” paywall, Business at $95.99 a year, before a single document", "source": "audit_frames"},
-  "asks": ["What do you send for signature?", "Where’s the document you need to sign?", "Who needs to sign this agreement?"],
-  "paywall": {"headline": "Get every sales contract signed from your phone", "uses_answers": true},
-  "rebuild": "each ad opens its own version: one question, a first signature or invite before the price, a paywall that names what they came to do, and the account asked for last",
+  "prices": {
+    "yearly": "$95.99",
+    "monthly": "$19.99",
+    "trial": "7 days",
+    "source": "US App Store listing, In-App Purchases (“SignNow Business, free trial”, “signNow Business Monthly”)"
+  },
+  "today": {
+    "text": "every install creates an account, verifies its email and meets the same “Upgrade Your Plan” paywall, Business at $95.99 a year, before a single document",
+    "source": "audit_frames"
+  },
+  "asks": [
+    "What do you send for signature?",
+    "Where’s the document you need to sign?",
+    "Who needs to sign this agreement?"
+  ],
+  "paywall": {
+    "headline": "Get every sales contract signed from your phone",
+    "uses_answers": true
+  },
+  "rebuild": "each ad and search opens its own first launch: one question, a first win before the price, a paywall that names the job, and the account asked for last",
   "ideas": [
-    {"n": 1, "title": "Let them sign something before the price", "screen": "First value", "outcome": "CR +10–20%"},
-    {"n": 2, "title": "Ask one thing, and use it on the paywall", "screen": "One question", "outcome": "CR +10–15%"},
-    {"n": 3, "title": "Ask for the account after the first signature", "screen": "Account", "outcome": "CR +5–10% · ARPU +10–17%"},
-    {"n": 4, "title": "Make the yearly saving impossible to miss", "screen": "Paywall", "outcome": "CR +5–15% · ARPU +10–15%"},
-    {"n": 5, "title": "Put your proof next to the button", "screen": "Paywall", "outcome": "CR +5–10%"}
+    {
+      "n": 1,
+      "title": "Let them sign before the price",
+      "screen": "First win",
+      "outcome": "CR +10–20%"
+    },
+    {
+      "n": 2,
+      "title": "Name the job on the paywall",
+      "screen": "Paywall",
+      "outcome": "CR +10–15%"
+    },
+    {
+      "n": 3,
+      "title": "Move the account form behind the plan",
+      "screen": "Account",
+      "outcome": "CR +5–10% · ARPU +10–17%"
+    },
+    {
+      "n": 4,
+      "title": "Show both plans and the saving",
+      "screen": "Paywall",
+      "outcome": "CR +5–15% · ARPU +10–15%"
+    },
+    {
+      "n": 5,
+      "title": "Put your 4.5 by the button",
+      "screen": "Paywall",
+      "outcome": "CR +5–10%"
+    }
   ]
 }

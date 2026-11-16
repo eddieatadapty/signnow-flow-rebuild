@@ -766,7 +766,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 /* nav */
 .jn-navw{position:sticky;top:0;z-index:60;padding:12px 12px 0}
 .jn-nav{max-width:1200px;margin:0 auto;height:60px;display:flex;align-items:center;gap:14px;padding:0 10px 0 22px;border-radius:999px;
-  background:rgba(243,241,237,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--jn-hair)}
+  background:var(--jn-navbg,rgba(243,241,237,.88));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--jn-hair)}
 .jn-logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:16px;letter-spacing:-.01em;white-space:nowrap;color:var(--jn-ink)}
 .jn-logo img{height:var(--jn-logo-h,24px);width:auto;display:block}
 .jn-logo img.jn-ic{height:28px;border-radius:7px}
@@ -843,12 +843,11 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-vid video,.jn-vid > img{width:100%;height:100%;object-fit:cover;display:block}
 .jn-vid > img.jn-fit{object-fit:contain;background:#fff}
 .jn-tag{position:absolute;z-index:3;top:10px;left:10px;background:rgba(255,255,255,.94);color:var(--jn-ink);font-size:11px;font-weight:600;letter-spacing:.06em;padding:5px 10px;border-radius:999px;display:flex;gap:6px;align-items:center;text-transform:uppercase}
-.jn-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:#0866FF}
-.jn-tag.asa::before{background:#0a84ff}
-.jn-tag.img::before{background:#8a8a8e}
+.jn-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,#0866FF)}
 .jn-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
 .jn-strip img{width:100%;aspect-ratio:var(--ar,9/16);object-fit:cover;border-radius:8px;display:block;background:#ddd}
 .jn-adb .hook{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--jn-ink)}
+.jn-adb .hook small{display:block;font-size:15px;font-weight:400;letter-spacing:0;color:var(--jn-mute);margin-top:4px}
 .jn-adb .en{margin-top:6px;font-size:14.5px;color:var(--jn-mute);line-height:1.45}
 .jn-adb .meta{margin-top:10px;font-size:13.5px;color:var(--jn-mute);line-height:1.45}
 .jn-adb dl{margin-top:8px;font-size:15px;line-height:1.5}
@@ -857,6 +856,15 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-adb .go{margin-top:20px}
 .jn-more{margin-top:16px;font-size:14px;line-height:1.55;color:var(--jn-mute);max-width:880px}
 .jn-foot-l{margin-top:8px;font-size:14px;line-height:1.55;color:var(--jn-mute);max-width:880px}
+/* every ad as its own card, stacked (Atlas): wide media for 16:9, a 300 px column for portrait ads and searches */
+.jn-adlist{display:flex;flex-direction:column;gap:12px;margin-top:44px}
+.jn-card{background:var(--jn-cream);border-radius:20px;padding:32px;display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:start}
+.jn-card.tall{grid-template-columns:300px 1fr;align-items:center}
+.jn-card .jn-media{max-width:none;margin:0;width:100%}
+.jn-card .jn-vid{aspect-ratio:var(--ar,16/9);max-height:none}
+.jn-card.tall .jn-vid{max-height:560px}
+.jn-card .jn-strip img{aspect-ratio:var(--ar,16/9)}
+.jn-card .jn-adb .go{margin-top:20px}
 /* Apple Ads search ad, as the App Store shows it (animated) */
 .jn-vid.asa{--ar:3/4;background:#fff}
 .jn-asa{position:absolute;inset:0;background:#fff;color:#111;padding:44px 14px 14px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,sans-serif;display:flex;flex-direction:column;gap:12px}
@@ -894,7 +902,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 /* idea rows */
 .jn-list{margin-top:40px;display:flex;flex-direction:column;max-width:980px;border-top:1px solid var(--jn-hair)}
 .jn-row{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:26px 6px;border-bottom:1px solid var(--jn-hair);width:100%;text-align:left;transition:background .2s}
-.jn-row:hover{background:#faf9f7}
+.jn-row:hover{background:var(--jn-hover,#faf9f7)}
 .jn-row > span{font-size:22px;font-weight:600;color:var(--jn-mute);letter-spacing:-.02em;padding-top:2px;font-variant-numeric:tabular-nums}
 .jn-row h3{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.3;color:var(--jn-ink)}
 .jn-row p{font-size:15.5px;line-height:1.55;color:var(--jn-mute);margin-top:6px;max-width:780px}
@@ -908,7 +916,10 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-og{position:absolute;left:50%;top:32px;width:58%;max-width:300px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,1fr);gap:3px;opacity:.95}
 .jn-og i{aspect-ratio:1;background:var(--c);display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font:600 12px/1.25 Inter,sans-serif;font-style:normal;color:#fff;overflow:hidden}
 .jn-osh::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(27,27,26,.98) 46%,rgba(27,27,26,.1) 80%)}
-.jn-osh > *:not(.jn-og){position:relative;z-index:2}
+.jn-osh > *:not(.jn-og):not(.jn-oimg){position:relative;z-index:2}
+.jn-osh.jn-world{background:var(--jn-world,var(--jn-dark))}
+.jn-osh.jn-world::after{background:linear-gradient(0deg,rgba(0,0,0,.94) 46%,rgba(0,0,0,.08) 82%)}
+.jn-oimg{position:absolute;left:50%;top:36px;width:64%;max-width:330px;transform:translateX(-50%);opacity:.92;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}
 .jn-osh .k{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .jn-osh h3{font-size:30px;font-weight:600;letter-spacing:-.03em;margin-top:8px;line-height:1.15;max-width:460px;color:#fff}
 .jn-nums{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
@@ -933,6 +944,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-ph .jn-h1p b{font-weight:600;color:var(--jn-mute)}
 .jn-tool{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:24px}
 .jn-seg{display:inline-flex;background:var(--jn-cream);border-radius:999px;padding:4px}
+.jn-langnote{font-size:13.5px;line-height:1.5;color:var(--jn-mute);margin-top:12px;max-width:780px}
 .jn-seg button{height:36px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--jn-ink2)}
 .jn-seg button.on{background:#fff;color:var(--jn-ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 html.jn #duo{max-width:1200px;width:auto;margin:0 auto;padding:0 40px}
@@ -945,21 +957,22 @@ html.jn .au-walk .au-walkbar i{display:block;height:3px;border-radius:3px;backgr
 html.jn .au-walk .au-walkbar i b{display:block;height:100%;background:var(--jn-lt);width:0;transition:width .5s}
 html.jn .au-walk:not(.on) .au-walkbar{display:none}
 html.jn .au-walk.on{position:sticky;top:84px}
-html.jn .au-duo-steps{justify-content:flex-start;margin-top:14px;gap:8px}
-html.jn .au-duo-steps button{height:44px;padding:0 18px;border:0;background:var(--jn-cream);color:var(--jn-ink2);font-size:15px;font-weight:500;border-radius:999px}
+html.jn .au-duo-steps{justify-content:flex-start;margin-top:14px;gap:6px}
+html.jn .au-duo-steps button{height:44px;padding:0 15px;border:0;background:var(--jn-cream);color:var(--jn-ink2);font-size:14.5px;font-weight:500;border-radius:999px;white-space:nowrap}
 html.jn .au-duo-steps button:hover{background:var(--jn-cream2)}
 html.jn .au-duo-steps button.au-today{background:#fff;box-shadow:inset 0 0 0 1.5px var(--jn-faint);border:0;color:var(--jn-mute)}
 html.jn .au-duo-steps button.on{background:var(--jn-ink);color:#fff;box-shadow:none}
 html.jn .au-duo-steps button.au-diff::after{background:var(--jn-acc2);border-color:#fff}
 html.jn .au-duo-sep{color:var(--jn-mute);letter-spacing:.12em;font-weight:500}
-html.jn .au-duo-stepcap{text-align:left;margin:14px 0 0;color:var(--jn-ink2);max-width:780px;font-size:15px}
+html.jn .au-duo-stepcap{text-align:left;margin:14px 0 0;color:var(--jn-mute);max-width:900px;font-size:15.5px;min-height:24px}
+html.jn .au-duo-stepcap b{color:var(--jn-ink);font-weight:600}
 html.jn .au-duo.au-n3{margin-top:30px;gap:28px;width:auto;margin-left:0;transform:none}
 html.jn .au-duo-ph{width:312px}
 html.jn .au-duo-fr{width:312px;height:675px;border-radius:46px;box-shadow:0 0 0 6px var(--au-ring),0 30px 60px rgba(27,27,26,.22)}
 html.jn .au-duo-fr iframe{transform:scale(.8)}
 html.jn .au-duo-pill{height:34px;background:var(--jn-cream);box-shadow:none;border-radius:999px;font-size:13.5px;font-weight:500;padding:0 14px 0 6px;max-width:332px;color:var(--jn-ink2);margin:0 auto 14px;width:fit-content}
-html.jn .au-duo-pill b{height:24px;padding:0 9px;display:inline-flex;align-items:center;background:#0866FF;font-size:11.5px;font-weight:500;border-radius:99px}
-html.jn .au-duo-pill.asa b{background:#1b1b1a}
+html.jn .au-duo-pill b{height:24px;padding:0 9px;display:inline-flex;align-items:center;background:var(--au-ring);font-size:11.5px;font-weight:500;border-radius:99px}
+html.jn .au-duo-steps .jn-n{font-variant-numeric:tabular-nums}
 html.jn .au-duo-cap{text-align:center;color:var(--jn-mute);min-height:84px;margin-top:16px;font-size:14px}
 html.jn .au-duo-cap .au-duo-k{color:var(--jn-ink);letter-spacing:.12em;font-size:12px;margin-bottom:4px}
 html.jn .au-duo-recs{margin-top:6px}
@@ -967,7 +980,7 @@ html.jn .au-rec{background:var(--jn-cream);border:0;border-radius:14px}
 html.jn .au-rec:hover,html.jn .au-rec.on{background:#fff;box-shadow:inset 0 0 0 1.5px var(--au-ring)}
 html.jn .au-rec>i{background:var(--au-ring)}
 html.jn .au-rec mark{background:var(--jn-soft);color:var(--jn-acc)}
-html.jn .au-rec-v{color:var(--jn-ink);letter-spacing:.1em}
+html.jn .au-rec-v{color:var(--au-ring);letter-spacing:.1em}
 html.jn .au-duo-tog button{border:0;background:var(--jn-cream)}
 html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 .jn-icards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:64px}
@@ -979,7 +992,7 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 .jn-icard h4{font-size:20px;font-weight:600;letter-spacing:-.02em;color:var(--jn-ink)}
 .jn-icard p{font-size:15px;line-height:1.55;color:var(--jn-mute)}
 .jn-icard .kept{font-size:13px;color:var(--jn-mute);border-top:1px solid var(--jn-hair);padding-top:10px;margin-top:6px}
-.jn-qr{position:relative;overflow:hidden;margin-top:40px;border-radius:20px;background:var(--jn-dark);color:#fff;padding:30px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.jn-qr{position:relative;overflow:hidden;margin-top:40px;border-radius:20px;background:var(--jn-world,var(--jn-dark));color:#fff;padding:30px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
 .jn-qg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(4,1fr);gap:3px;padding:3px}
 .jn-qg i{background:var(--c);opacity:.85}
 .jn-qr::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(27,27,26,.95) 30%,rgba(27,27,26,.55))}
@@ -999,7 +1012,8 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
   .jn-hin{grid-template-columns:1fr;padding-top:120px;padding-bottom:36px}
   .jn-hero{min-height:0}
   .jn-fan{height:330px;max-width:520px}
-  .jn-two,.jn-lib,.jn-outc{grid-template-columns:1fr}
+  .jn-two,.jn-lib,.jn-outc,.jn-card,.jn-card.tall{grid-template-columns:1fr}
+  .jn-card.tall .jn-media{max-width:300px}
   .jn-two{gap:36px}
   .jn-stats > .jn-wrap{grid-template-columns:repeat(2,1fr)}
   .jn-stat:nth-child(3){border-left:0}
@@ -1022,7 +1036,7 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
   .jn-fan{display:none}
   .jn-hin{padding:104px 22px 30px}
   .jn-sec{padding-top:72px}
-  .jn-lib{padding:18px;gap:24px}
+  .jn-lib,.jn-card{padding:18px;gap:24px}
   .jn-row{grid-template-columns:40px 1fr;gap:10px}
   .jn-icards{grid-template-columns:1fr}
   .jn-osh{min-height:400px;padding:26px 22px}
@@ -1030,7 +1044,7 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 }
 @media (max-width:520px){.jn-logo span.jn-name,.jn-logo .jn-mask{display:none}.jn-logo img:not(.jn-ic){max-width:96px;height:auto;max-height:22px;object-fit:contain;object-position:left center}.jn-demo{padding:0 11px}.jn-stat b{font-size:30px}}
 @media (prefers-reduced-motion:reduce){.jn-fan img.jn-ic,.jn-post-m img{animation:none}.jn-slots i::before,.jn-slots i span{animation:none;opacity:.8}}
-html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--jn-soft:#ebf4fb}
+html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#0768b4;--jn-acc2:#0077d1;--jn-soft:#d7e8f4;--jn-cream:#eaf3f9;--jn-cream2:#dcebf6;--jn-hover:#f3f8fc;--jn-navbg:rgba(234,243,249,.88);--jn-world:radial-gradient(70% 90% at 82% 8%,rgba(0,119,209,.55),transparent 62%),radial-gradient(55% 70% at 8% 100%,rgba(7,109,189,.35),transparent 70%),linear-gradient(180deg,#093456,#0a2841)}html.jn .jn-qg{display:none}html.jn .jn-qr::before{background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(0,0,0,.2))}
 /* JUNOCSS:END */
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" id="jnFont">
@@ -1144,14 +1158,14 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
     <p class="au-duo-stepcap" id="duoStepCap"></p>
     <div class="au-duo-tog" role="group" aria-label="Which ad"><button type="button" data-duoone="a" class=on>A · YouTube ad</button><button type="button" data-duoone="b">B · “sign docs”</button><button type="button" data-duoone="c">C · “agreement”</button></div>
     <div class="au-duo au-n3" id="duoStage" data-one="a">
-      <div class="au-duo-ph au-duo-a"><p class="au-duo-pill"><b>YouTube ad</b><span>“Close deals with signNow.”</span></p><div class="au-duo-fr" id="duoFra"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapa"></p><div class="au-duo-recs" id="duoReca" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-b"><p class="au-duo-pill"><b>Apple Ads search</b><span>sign docs</span></p><div class="au-duo-fr" id="duoFrb"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapb"></p><div class="au-duo-recs" id="duoRecb" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-c"><p class="au-duo-pill"><b>Apple Ads search</b><span>agreement</span></p><div class="au-duo-fr" id="duoFrc"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapc"></p><div class="au-duo-recs" id="duoRecc" aria-label="Recommendations for this ad"></div></div>
+      <div class="au-duo-ph au-duo-a"><p class="au-duo-pill"><b>YouTube ad</b><span>Send a contract</span></p><div class="au-duo-fr" id="duoFra"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapa"></p><div class="au-duo-recs" id="duoReca" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-b"><p class="au-duo-pill"><b>Apple Ads search</b><span>Sign a document</span></p><div class="au-duo-fr" id="duoFrb"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapb"></p><div class="au-duo-recs" id="duoRecb" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-c"><p class="au-duo-pill"><b>Apple Ads search</b><span>Get both sides signed</span></p><div class="au-duo-fr" id="duoFrc"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapc"></p><div class="au-duo-recs" id="duoRecc" aria-label="Recommendations for this ad"></div></div>
     </div>
     <p class="au-duo-hint">Tap through any phone and the others follow. A dot marks the screens that differ by ad.</p>
     <table class="au-duo-tbl" id="duoTbl"></table>
     <div class="au-duo-next"><div><b>Day 1</b><h4>Pass the campaign and keyword into Adapty</h4><p>After a one-time SDK setup, the YouTube campaign or the Apple Ads keyword each install came from arrives as a user attribute and picks the flow at first open. No app release.</p></div><div><b>Week 1</b><h4>One flow per promise</h4><p>Sender, signer and two-party agreement each get their own first screens; your brand search “signnow” keeps today’s sign-up first for people who already have an account.</p></div><div><b>Week 2</b><h4>Judge each source on what it earns</h4><p>Each flow against today’s, measured on trials, paid subscriptions and what each install from that ad or search earns, so spend follows the promise that pays.</p></div></div>
     <p class="au-adn">All three phones run the whole flow with the five ideas. On Apple Ads you hold about 97% of US searches for your own name, a strong brand defence. Some terms with a high share are words from legal documents, not people looking for a signing app: “terms_of_use” and “termsofuse” (80%), “section” (64%), “eula” (21%), “access”, “issuer”. Worth checking what those installs earn. The search data is account-level, so it can’t tell SignNow from SignNow Private Cloud. This layer carries no range: only a test per ad can give one.</p>
   </div>
-  <script type="application/json" id="duoData">{"flows": [{"k": "a", "ad": "a", "chan": "YouTube ad", "label": "A · YouTube ad", "pill": "“Close deals with signNow.”", "version": "Version A · Invite first", "recs": [{"step": "ask", "title": "Ask what they send for signature", "why": "<b>Try</b> one question about what they send, <b>because</b> the ad sells closing deals, and the answer names the invite and the paywall.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "do", "title": "A first invite that comes back signed", "why": "<b>Try</b> sending an invite and showing it opened, then signed, <b>because</b> the ad promises “stay in the loop”, and your notification proves it.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Result first: your signed notification", "why": "<b>Try</b> your lock-screen art with “Get every sales contract signed”, <b>because</b> a sender pays to close the next deal, not to “upgrade”.", "impact": "+5–10%", "il": "CR to purchase"}]}, {"k": "b", "ad": "b", "chan": "Apple Ads search", "label": "B · “sign docs”", "pill": "sign docs", "version": "Version B · Signature first", "recs": [{"step": "ask", "title": "Ask where their document is", "why": "<b>Try</b> asking where the document is, <b>because</b> “sign docs” means they have one now, and the answer picks your upload source.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "do", "title": "Sign the Sample Document first", "why": "<b>Try</b> one finger signature on your Sample Document before any price, <b>because</b> it takes ten seconds and is exactly what they searched for.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Trial first: today, day 6, day 7", "why": "<b>Try</b> a timeline of the free week, <b>because</b> a one-off signer fears a charge, and “cancel a day before” answers it.", "impact": "+3–8%", "il": "CR to purchase"}]}, {"k": "c", "ad": "c", "chan": "Apple Ads search", "label": "C · “agreement”", "pill": "agreement", "version": "Version C · Signers first", "recs": [{"step": "ask", "title": "Ask who needs to sign", "why": "<b>Try</b> asking who signs, <b>because</b> an agreement has two sides, and the answer sets the signers, the order and the headline.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "do", "title": "Signers, order and “legally binding”", "why": "<b>Try</b> setting up the signers with ESIGN, UETA and eIDAS shown, <b>because</b> an agreement only counts if it holds up.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Proof first: laurels, stars, a review", "why": "<b>Try</b> your 7 000 000+ downloads, 4.5 stars and Barbara Cerullo’s review above the plans, <b>because</b> a contract needs trust first.", "impact": "+5–10%", "il": "CR to purchase"}]}], "rows": [{"id": "ad", "h": "Where they came from", "a": "Your YouTube ad: “Save time and money. Close deals with signNow.”, then “Download signNow on the App Store”.", "b": "The search “sign docs”: your ad shows on about 59% of these US searches.", "c": "The search “agreement”: about 63%, popularity 15.34, second only to “sign” among signing terms."}, {"id": "welcome", "h": "Welcome", "a": "“Close deals with SignNow, wherever they happen”, with sending, real-time notifications and templates.", "b": "“Sign your document in just a few taps”, with PDFs and Word files, fields, and offline signing.", "c": "“Get your agreement signed, legally binding”, with signing order, ESIGN / UETA / eIDAS and audit trails."}, {"id": "ask", "h": "One question", "a": "“What do you send for signature?” Sales contracts · Purchase orders · HR forms · Leases.", "b": "“Where’s the document you need to sign?” Phone · Cloud · Paper · Email, your own upload sources.", "c": "“Who needs to sign this agreement?” Just me · Me and one other · Several, in order."}, {"id": "do", "h": "First value", "a": "Invite to Sign: “Sales contract.pdf” to client@example.com, then Sent · Opened · Signed and “Your document has been signed!”.", "b": "Your Sample Document in the editor: Sign Myself, draw with a finger, signed and dated.", "c": "The signers and the signing order set up, with ESIGN, UETA, eIDAS, audit trail and 256-bit encryption."}, {"id": "paywall", "h": "Paywall", "a": "Result first: your lock-screen art, “Get every sales contract signed from your phone”, invites listed first.", "b": "Trial first: “Your signature is ready”, then Today · Day 6 · Day 7, and both plans.", "c": "Proof first: 7 000 000+ downloads, “Get your agreement signed by both of you”, Barbara Cerullo’s review."}], "tableTitle": "The same app, answering three different ads.", "tableSub": "The five ideas sit underneath all three. These screens change with where they came from; each row opens that step in every phone.", "steps": [{"id": "ad", "label": "The ad"}, {"id": "today", "label": "Today’s paywall"}, {"sep": "Proposed"}, {"id": "welcome", "label": "Welcome"}, {"id": "ask", "label": "One question", "ids": {"a": "ask-a", "b": "ask-b", "c": "ask-c"}}, {"id": "do", "label": "First value", "ids": {"a": "do-a", "b": "do-b", "c": "do-c"}}, {"id": "paywall", "label": "Paywall", "ids": {"a": "paywall-a", "b": "paywall-b", "c": "paywall-c"}}, {"id": "signup", "label": "Account"}, {"id": "home", "label": "Documents"}], "stepCaps": {"today": "<b>Today</b>, all three land here after sign-up and “Verify Your Email”: “Upgrade Your Plan”, Business at $95.99 a year, before a single document. The paywall’s ✕ opens an empty Documents screen.", "signup": "Same for every version: your own sign-up screen, after the paywall, as the step that saves their document (idea 3). The paywall’s ✕ lands here too, never on a second paywall.", "home": "Same for every version: your Documents screen, with the document they made at the top."}}</script>
+  <script type="application/json" id="duoData">{"flows": [{"k": "a", "ad": "a", "chan": "YouTube ad", "label": "A · YouTube ad", "pill": "Send a contract", "version": "From your YouTube ad", "recs": [{"step": "ask", "title": "Ask what they send", "why": "One question in your own words, “What do you send for signature?”. The ad sells closing deals, so the answer names the sample and the paywall.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "do", "title": "A sample contract that comes back signed", "why": "Sent to a sample client, then Opened, then Signed, with your own “Your document has been signed!”: the “stay in the loop” the ad promised.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Open the paywall on the signed alert", "why": "Your lock-screen art with “Get every sales contract signed from your phone”, and the year with its 7 days free leading the price.", "impact": "+5–10%", "il": "CR to purchase"}]}, {"k": "b", "ad": "b", "chan": "Apple Ads search", "label": "B · “sign docs”", "pill": "Sign a document", "version": "From the “sign docs” search", "recs": [{"step": "ask", "title": "Ask where the document is", "why": "“sign docs” means they have one now. Your own Load from Device, Cloud and Camera answer it, and the answer opens the right source.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "do", "title": "Sign the Sample Document first", "why": "One finger signature on your Sample Document, signed and dated in about ten seconds, before any price. It is what they searched for.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Show the free week day by day", "why": "Today, Day 6, Day 7 above both plans, with “cancel a day before” in plain words, for someone who signs once and fears a charge.", "impact": "+3–8%", "il": "CR to purchase"}]}, {"k": "c", "ad": "c", "chan": "Apple Ads search", "label": "C · “agreement”", "pill": "Get both sides signed", "version": "From the “agreement” search", "recs": [{"step": "ask", "title": "Ask who needs to sign", "why": "Just me, me and one other, or several in order. An agreement has two sides, and the answer sets the signers and the headline.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "do", "title": "Set the signers, show it holds up", "why": "The signers and the signing order set up, with ESIGN, UETA, eIDAS and the audit trail from your listing on the same screen.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Lead the paywall with your proof", "why": "Your 7 000 000+ downloads, 4.5 stars and Barbara Cerullo’s review above the plans, before anyone signs a contract.", "impact": "+5–10%", "il": "CR to purchase"}]}], "rows": [{"id": "ad", "h": "Where they came from", "a": "Your YouTube ad, then “Download signNow on the App Store”. Tap Install.", "b": "Your ad on the “sign docs” search, about 59% of US searches. Tap Get.", "c": "Your ad on the “agreement” search, about 63% of US searches. Tap Get."}, {"id": "welcome", "h": "Arrive", "a": "“Close deals with SignNow, wherever they happen”, with sending, notifications and templates. No account form yet.", "b": "“Sign your document in just a few taps”, with PDFs and Word files, fields and offline signing.", "c": "“Get your agreement signed, legally binding”, with signing order, ESIGN, UETA, eIDAS and the audit trail."}, {"id": "ask", "h": "One question", "a": "“What do you send for signature?” Sales contracts, purchase orders, HR forms, leases.", "b": "“Where’s the document you need to sign?” Your own phone, cloud, paper and email sources.", "c": "“Who needs to sign this agreement?” Just me, me and one other, or several in order."}, {"id": "do", "h": "First win", "a": "A sample “Sales contract.pdf” sent to client@example.com: Sent, Opened, Signed, then your “Your document has been signed!”.", "b": "Your Sample Document in the editor: Sign Myself, a finger signature, signed and dated.", "c": "The signers and the signing order set, with ESIGN, UETA, eIDAS, the audit trail and 256-bit encryption."}, {"id": "paywall", "h": "Paywall", "a": "Your lock-screen art and “Get every sales contract signed from your phone”; the year with its 7 days free leads.", "b": "“Your signature is ready”, then the free week as Today, Day 6, Day 7, above both plans.", "c": "“Get your agreement signed by both of you”, with 7 000 000+ downloads, 4.5 stars and Barbara Cerullo’s review on top."}], "tableTitle": "The same app, answering three different ads.", "tableSub": "The five ideas sit underneath all three. These screens change with where they came from; each row opens that step in every phone.", "steps": [{"id": "today", "label": "Today"}, {"id": "ad", "label": "The ad"}, {"id": "welcome", "label": "Arrive"}, {"id": "ask", "label": "One question", "ids": {"a": "ask-a", "b": "ask-b", "c": "ask-c"}}, {"id": "do", "label": "First win", "ids": {"a": "do-a", "b": "do-b", "c": "do-c"}}, {"id": "paywall", "label": "Paywall", "ids": {"a": "paywall-a", "b": "paywall-b", "c": "paywall-c"}}, {"id": "signup", "label": "Account"}, {"id": "home", "label": "In the app"}], "stepCaps": {"today": "<b>Today:</b> every install, whatever ad or search it came from, opens on “Secure online signing, wherever it happens”, an account form and “Verify Your Email”, then “Upgrade Your Plan”. The ✕ opens an empty Documents screen.", "signup": "Your own account form, after the plan instead of before it. The paywall’s ✕ lands here too, never on a second paywall.", "home": "Your Documents screen, with the document they made at the top."}, "stepLine": {"today": "<b>Today:</b> every install, whatever ad or search it came from, opens on “Secure online signing, wherever it happens”, an account form and “Verify Your Email”, then “Upgrade Your Plan”. The ✕ opens an empty Documents screen.", "ad": "<b>Step 1.</b> Your YouTube ad on the left, the “sign docs” and “agreement” searches on the right. Tap Install or Get.", "welcome": "<b>Step 2. Proposed:</b> the first screen keeps the promise in the ad’s own words. No account form yet.", "ask": "<b>Step 3. Proposed:</b> one question, a different one per source, in the words of your Documents screen.", "do": "<b>Step 4. Proposed:</b> a first win before any price: a contract back signed, a signature, the signers set.", "paywall": "<b>Step 5. Proposed:</b> your paywall and your prices. The headline names the job; the ✕ closes into the app.", "signup": "<b>Step 6. Proposed:</b> your account form, after the plan instead of before it.", "home": "<b>Step 7.</b> Your Documents screen, with their first document in it."}}</script>
 </section>
 
 <section class="au-sec au-white" id="prototype">
@@ -1176,17 +1190,17 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
   <div class="body sn-adb">
     <div data-ads="a">
       <div class="sn-yt-top"><i>▶</i>YouTube<span>⌕</span></div>
-      <div class="sn-yt-v"><video src="assets/ads/yt-ad.mp4" poster="assets/ads/yt-2.jpg" autoplay muted loop playsinline></video><span class="sn-yt-tag">Ad · 0:23</span><span class="sn-yt-bar"><i></i></span></div>
-      <div class="sn-yt-card"><img src="assets/brand/appstore-icon.jpg" alt=""><div><b>Download signNow on the App Store</b><small>Sponsored · SignNow: e-Signature app</small></div><button class="sn-yt-inst" data-go="next">Install</button></div>
-      <p class="sn-yt-txt">“Save time and money. Close deals with signNow.”</p>
-      <p class="sn-yt-meta">“Sign documents and collect signatures in minutes. And stay in the loop about all changes.”</p>
+      <div class="sn-yt-v"><video src="assets/ads/yt-ad.mp4" poster="assets/ads/yt-2.jpg" autoplay muted loop playsinline></video><span class="sn-yt-tag" data-t="yt_tag">Ad · 0:23</span><span class="sn-yt-bar"><i></i></span></div>
+      <div class="sn-yt-card"><img src="assets/brand/appstore-icon.jpg" alt=""><div><b data-t="yt_dl">Download signNow on the App Store</b><small data-t="yt_spon">Sponsored · SignNow: e-Signature app</small></div><button class="sn-yt-inst" data-go="next" data-t="yt_inst">Install</button></div>
+      <p class="sn-yt-txt" data-t="yt_txt">“Save time and money. Close deals with signNow.”</p>
+      <p class="sn-yt-meta" data-t="yt_meta">“Sign documents and collect signatures in minutes. And stay in the loop about all changes.”</p>
       <div class="sn-yt-next"><i></i><span><b></b><b></b></span></div>
       <div class="sn-yt-next"><i></i><span><b></b><b></b></span></div>
     </div>
     <div data-ads="b c" class="sn-as">
-      <div class="sn-sbar"><div><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg><span class="sn-term" data-show="ad:b">sign docs</span><span class="sn-term" data-show="ad:c">agreement</span></div><b>Cancel</b></div>
-      <div class="sn-res"><img src="assets/brand/appstore-icon.jpg" alt=""><div><b>SignNow: e-Signature app</b><small>Sign documents &amp; PDF forms</small><em>★★★★½ 18K</em></div><button class="sn-get" data-go="next">GET</button></div>
-      <p class="sn-adtag"><i>Ad</i></p>
+      <div class="sn-sbar"><div><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg><span class="sn-term" data-show="ad:b">sign docs</span><span class="sn-term" data-show="ad:c">agreement</span></div><b data-t="as_cancel">Cancel</b></div>
+      <div class="sn-res"><img src="assets/brand/appstore-icon.jpg" alt=""><div><b data-t="as_name">SignNow: e-Signature app</b><small data-t="as_sub">Sign documents &amp; PDF forms</small><em>★★★★½ 18K</em></div><button class="sn-get" data-go="next" data-t="as_get">GET</button></div>
+      <p class="sn-adtag"><i data-t="as_ad">Ad</i></p>
       <div class="sn-shots"><img src="assets/brand/appstore-shot-1.jpg" alt=""><img data-show="ad:b" src="assets/brand/appstore-shot-3.jpg" alt=""><img data-show="ad:c" src="assets/brand/appstore-shot-5.jpg" alt=""><img src="assets/brand/appstore-shot-2.jpg" alt=""></div>
       <div class="sn-more"><i></i><span><b></b><b></b></span></div>
       <div class="sn-more"><i></i><span><b></b><b></b></span></div>
@@ -1198,18 +1212,18 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
   <div class="body sn-wel">
     <div class="sn-sky">
       <img class="sn-word" src="assets/crop/wordmark.png" alt="SignNow">
-      <h1 class="sn-big" data-show="ad:a"><span class="sn-hl">Close deals</span> with SignNow, wherever they happen</h1>
-      <h1 class="sn-big" data-show="ad:b"><span class="sn-hl">Sign your document</span> in just a few taps</h1>
-      <h1 class="sn-big" data-show="ad:c"><span class="sn-hl">Get your agreement signed</span>, legally binding</h1>
+      <h1 class="sn-big" data-show="ad:a"><span data-t="wel_h_a"><span class="sn-hl">Close deals</span> with SignNow, wherever they happen</span></h1>
+      <h1 class="sn-big" data-show="ad:b"><span data-t="wel_h_b"><span class="sn-hl">Sign your document</span> in just a few taps</span></h1>
+      <h1 class="sn-big" data-show="ad:c"><span data-t="wel_h_c"><span class="sn-hl">Get your agreement signed</span>, legally binding</span></h1>
     </div>
     <div class="sn-sheet">
-      <p class="sn-proof"><i>★</i> 4.5 <span>· 18K ratings on the App Store</span></p>
-      <ul class="sn-ticks" data-show="ad:a"><li>Send documents to one or more recipients via email or link</li><li>Get notified in real time when documents are opened or signed</li><li>Create reusable templates for documents you send often</li></ul>
-      <ul class="sn-ticks" data-show="ad:b"><li>Sign PDFs, Word files, and other formats in just a few taps</li><li>Fill out forms, add text, checkboxes, dates, and stamps</li><li>Works offline — sign without internet, sync when back online</li></ul>
-      <ul class="sn-ticks" data-show="ad:c"><li>Set the signing order and assign roles</li><li>Legally binding e-signatures compliant with ESIGN, UETA, and eIDAS</li><li>Detailed audit trails with timestamps, IP addresses, and signer info</li></ul>
+      <p class="sn-proof" data-t="proof_as"><i>★</i> 4.5 <span>· 18K ratings on the App Store</span></p>
+      <ul class="sn-ticks" data-show="ad:a"><li data-t="wel_a1">Send documents to one or more recipients via email or link</li><li data-t="wel_a2">Get notified in real time when documents are opened or signed</li><li data-t="wel_a3">Create reusable templates for documents you send often</li></ul>
+      <ul class="sn-ticks" data-show="ad:b"><li data-t="wel_b1">Sign PDFs, Word files, and other formats in just a few taps</li><li data-t="wel_b2">Fill out forms, add text, checkboxes, dates, and stamps</li><li data-t="wel_b3">Works offline — sign without internet, sync when back online</li></ul>
+      <ul class="sn-ticks" data-show="ad:c"><li data-t="wel_c1">Set the signing order and assign roles</li><li data-t="wel_c2">Legally binding e-signatures compliant with ESIGN, UETA, and eIDAS</li><li data-t="wel_c3">Detailed audit trails with timestamps, IP addresses, and signer info</li></ul>
       <div class="sn-foot">
-        <button class="sn-cta" data-go="next">Get started</button>
-        <p class="sn-small">Already have an account? <a>Log In</a></p>
+        <button class="sn-cta" data-go="next" data-t="wel_cta">Get started</button>
+        <p class="sn-small" data-t="have">Already have an account? <a>Log In</a></p>
       </div>
     </div>
   </div>
@@ -1219,15 +1233,15 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
 <section class="scr" data-id="ask-a" data-ad="a">
   <div class="body">
     <div class="sn-top"><button class="sn-back" data-back aria-label="Back">‹</button><div class="sn-prog"><i style="width:34%"></i></div></div>
-    <h1 class="sn-h" data-hl="2">What do you send for signature?</h1>
-    <p class="sn-s">We’ll set up your first invite for it. You can send anything later.</p>
+    <h1 class="sn-h" data-hl="2" data-t="aska_h">What do you send for signature?</h1>
+    <p class="sn-s" data-t="aska_s">We’ll set up your first invite for it. You can send anything later.</p>
     <div class="sn-opts" data-hl="2 a1">
-      <button class="sn-op" data-pick="send:sales"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></span><span>Sales contracts and quotes</span></button>
-      <button class="sn-op" data-pick="send:po"><span class="sn-oi"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span>Invoices and purchase orders</span></button>
-      <button class="sn-op" data-pick="send:hr"><span class="sn-oi"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></span><span>HR and onboarding forms</span></button>
-      <button class="sn-op" data-pick="send:lease"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M4 11l8-6 8 6v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><span>Leases and real-estate forms</span></button>
+      <button class="sn-op" data-pick="send:sales"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></span><span data-t="aska_o1">Sales contracts and quotes</span></button>
+      <button class="sn-op" data-pick="send:po"><span class="sn-oi"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span data-t="aska_o2">Invoices and purchase orders</span></button>
+      <button class="sn-op" data-pick="send:hr"><span class="sn-oi"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></span><span data-t="aska_o3">HR and onboarding forms</span></button>
+      <button class="sn-op" data-pick="send:lease"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M4 11l8-6 8 6v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><span data-t="aska_o4">Leases and real-estate forms</span></button>
     </div>
-    <div class="sn-foot"><button class="sn-cta" data-go="next">Continue</button></div>
+    <div class="sn-foot"><button class="sn-cta" data-go="next" data-t="next">Continue</button></div>
   </div>
 </section>
 
@@ -1235,15 +1249,15 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
 <section class="scr" data-id="ask-b" data-ad="b">
   <div class="body">
     <div class="sn-top"><button class="sn-back" data-back aria-label="Back">‹</button><div class="sn-prog"><i style="width:34%"></i></div></div>
-    <h1 class="sn-h" data-hl="2">Where’s the document you need to sign?</h1>
-    <p class="sn-s">We’ll open it from there next time. First, one signature on our sample.</p>
+    <h1 class="sn-h" data-hl="2" data-t="askb_h">Where’s the document you need to sign?</h1>
+    <p class="sn-s" data-t="askb_s">We’ll open it from there next time. First, one signature on our sample.</p>
     <div class="sn-opts" data-hl="2 b1">
-      <button class="sn-op" data-pick="src:files"><span class="sn-oi"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M10 18h4"/></svg></span><span>On my phone<small>Load from Device</small></span></button>
-      <button class="sn-op" data-pick="src:cloud"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/></svg></span><span>Google Drive, Dropbox, OneDrive<small>Load from Cloud</small></span></button>
-      <button class="sn-op" data-pick="src:cam"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><span>On paper: I’ll scan it<small>Camera</small></span></button>
-      <button class="sn-op" data-pick="src:mail"><span class="sn-oi"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span>In an email<small>Import from email</small></span></button>
+      <button class="sn-op" data-pick="src:files"><span class="sn-oi"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M10 18h4"/></svg></span><span data-t="askb_o1">On my phone<small>Load from Device</small></span></button>
+      <button class="sn-op" data-pick="src:cloud"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/></svg></span><span data-t="askb_o2">Google Drive, Dropbox, OneDrive<small>Load from Cloud</small></span></button>
+      <button class="sn-op" data-pick="src:cam"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><span data-t="askb_o3">On paper: I’ll scan it<small>Camera</small></span></button>
+      <button class="sn-op" data-pick="src:mail"><span class="sn-oi"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span data-t="askb_o4">In an email<small>Import from email</small></span></button>
     </div>
-    <div class="sn-foot"><button class="sn-cta" data-go="next">Continue</button></div>
+    <div class="sn-foot"><button class="sn-cta" data-go="next" data-t="next">Continue</button></div>
   </div>
 </section>
 
@@ -1251,37 +1265,37 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
 <section class="scr" data-id="ask-c" data-ad="c">
   <div class="body">
     <div class="sn-top"><button class="sn-back" data-back aria-label="Back">‹</button><div class="sn-prog"><i style="width:34%"></i></div></div>
-    <h1 class="sn-h" data-hl="2">Who needs to sign this agreement?</h1>
-    <p class="sn-s">We’ll set up the signers and the order for you.</p>
+    <h1 class="sn-h" data-hl="2" data-t="askc_h">Who needs to sign this agreement?</h1>
+    <p class="sn-s" data-t="askc_s">We’ll set up the signers and the order for you.</p>
     <div class="sn-opts" data-hl="2 c1">
-      <button class="sn-op" data-pick="who:me"><span class="sn-oi"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></span><span>Just me</span></button>
-      <button class="sn-op" data-pick="who:two"><span class="sn-oi"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M3 20c.8-3.5 3.3-5.5 6-5.5s5.2 2 6 5.5M15 14.5c2.6 0 4.8 1.7 5.5 5"/></svg></span><span>Me and one other person</span></button>
-      <button class="sn-op" data-pick="who:many"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M5 6h2M5 12h2M5 18h2M10 6h9M10 12h9M10 18h9"/></svg></span><span>Several people, in order</span></button>
+      <button class="sn-op" data-pick="who:me"><span class="sn-oi"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></span><span data-t="askc_o1">Just me</span></button>
+      <button class="sn-op" data-pick="who:two"><span class="sn-oi"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M3 20c.8-3.5 3.3-5.5 6-5.5s5.2 2 6 5.5M15 14.5c2.6 0 4.8 1.7 5.5 5"/></svg></span><span data-t="askc_o2">Me and one other person</span></button>
+      <button class="sn-op" data-pick="who:many"><span class="sn-oi"><svg viewBox="0 0 24 24"><path d="M5 6h2M5 12h2M5 18h2M10 6h9M10 12h9M10 18h9"/></svg></span><span data-t="askc_o3">Several people, in order</span></button>
     </div>
-    <div class="sn-foot"><button class="sn-cta" data-go="next">Continue</button></div>
+    <div class="sn-foot"><button class="sn-cta" data-go="next" data-t="next">Continue</button></div>
   </div>
 </section>
 
 <!-- A · first value: send an invite and watch it come back signed (the ad's "stay in the loop") -->
 <section class="scr" data-id="do-a" data-ad="a">
   <div class="body" style="background:var(--b-paper)">
-    <div class="sn-top"><button class="sn-back" data-back aria-label="Back">‹</button><b style="font:600 16px var(--b-font);color:var(--b-ink)">Invite to Sign</b><span style="width:22px"></span></div>
+    <div class="sn-top"><button class="sn-back" data-back aria-label="Back">‹</button><b style="font:600 16px var(--b-font);color:var(--b-ink)" data-t="doa_title">Invite to Sign</b><span style="width:22px"></span></div>
     <div class="sn-card" data-hl="1 a2">
-      <div class="sn-docrow"><span class="sn-doci"><i></i><i></i><i></i><i></i></span><div><b><span data-bind="label:send"></span>.pdf</b><small>Signature field · Signer 1</small></div></div>
+      <div class="sn-docrow"><span class="sn-doci"><i></i><i></i><i></i><i></i></span><div><b><span data-bind="label:send"></span>.pdf</b><small data-t="doa_field">Signature field · Signer 1</small></div></div>
     </div>
     <div class="sn-card" data-show="sent:0">
-      <p class="sn-lab">Signer 1</p>
+      <p class="sn-lab" data-t="doa_signer">Signer 1</p>
       <div class="sn-inp">client@example.com</div>
-      <div class="sn-tog" style="margin-top:12px"><span>Notify me when it’s signed</span><span class="sn-sw"></span></div>
+      <div class="sn-tog" style="margin-top:12px"><span data-t="doa_notify">Notify me when it’s signed</span><span class="sn-sw"></span></div>
     </div>
     <div class="sn-card" data-show="sent:1">
-      <ul class="sn-steps"><li class="on"><i>✓</i>Sent to client@example.com<small>now</small></li><li data-st="1"><i>✓</i>Opened<small>a moment later</small></li><li data-st="2"><i>✓</i>Signed<small>done</small></li></ul>
+      <ul class="sn-steps"><li class="on" data-t="doa_st1"><i>✓</i>Sent to client@example.com<small>now</small></li><li data-st="1" data-t="doa_st2"><i>✓</i>Opened<small>a moment later</small></li><li data-st="2" data-t="doa_st3"><i>✓</i>Signed<small>done</small></li></ul>
     </div>
-    <div class="sn-noti" data-show="sent:1"><img src="assets/brand/appstore-icon.jpg" alt=""><div><em>SIGNNOW <small>now</small></em><b>Your document has been signed!</b><span data-bind="label:send"></span>, by client@example.com</div></div>
-    <p class="sn-small" data-show="sent:1" style="text-align:left">A walk-through: the client and the signature are our example, nothing was sent.</p>
+    <div class="sn-noti" data-show="sent:1"><img src="assets/brand/appstore-icon.jpg" alt=""><div><em>SIGNNOW <small data-t="noti_now">now</small></em><b data-t="noti_h">Your document has been signed!</b><span data-bind="label:send"></span><span data-t="noti_by">, by client@example.com</span></div></div>
+    <p class="sn-small" data-show="sent:1" style="text-align:left"><span data-t="doa_demo">A walk-through: the client and the signature are our example, nothing was sent.</span></p>
     <div class="sn-foot">
-      <button class="sn-cta" data-show="sent:0" data-pick="sent:1">Send invite</button>
-      <button class="sn-cta" data-show="sent:1" data-go="next">Continue</button>
+      <button class="sn-cta" data-show="sent:0" data-pick="sent:1"><span data-t="doa_send">Send invite</span></button>
+      <button class="sn-cta" data-show="sent:1" data-go="next"><span data-t="next">Continue</span></button>
     </div>
   </div>
 </section>
@@ -1289,38 +1303,38 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
 <!-- B · first value: sign their Sample Document with a finger, in their editor -->
 <section class="scr" data-id="do-b" data-ad="b">
   <div class="body sn-ed">
-    <div class="sn-ednav"><span>‹</span><span>Sample Document</span><b class="sn-dim" data-show="signed:0">Done</b><b data-show="signed:1" data-go="next" style="cursor:pointer">Done</b></div>
+    <div class="sn-ednav"><span>‹</span><span data-t="doc_sample">Sample Document</span><b class="sn-dim" data-show="signed:0"><span data-t="done">Done</span></b><b data-show="signed:1" data-go="next" style="cursor:pointer"><span data-t="done">Done</span></b></div>
     <span class="sn-from" data-bind="srcline"></span>
     <div class="sn-page" data-hl="1 b2">
-      <span class="sn-stamp" data-show="signed:1">Signed</span>
-      <h4>Service Agreement</h4>
-      <p>Sample Document</p>
+      <span class="sn-stamp" data-show="signed:1"><span data-t="stamp">Signed</span></span>
+      <h4 data-t="dob_h">Service Agreement</h4>
+      <p data-t="doc_sample">Sample Document</p>
       <div class="sn-ln"></div><div class="sn-ln m"></div><div class="sn-ln"></div><div class="sn-ln s"></div>
       <div class="sn-ln m"></div><div class="sn-ln"></div><div class="sn-ln s"></div>
       <div class="sn-fld">
-        <div><label>Signature</label><button class="sn-sig" data-padopen data-pick="signed:1"><span data-show="signed:0">Tap to sign</span><span class="sn-sigout" data-show="signed:1"></span></button></div>
-        <div style="flex:.7"><label>Date</label><div class="sn-date"><span data-show="signed:1">Nov 16, 2026</span></div></div>
+        <div><label data-t="dob_sig">Signature</label><button class="sn-sig" data-padopen data-pick="signed:1"><span data-show="signed:0"><span data-t="dob_tap">Tap to sign</span></span><span class="sn-sigout" data-show="signed:1"></span></button></div>
+        <div style="flex:.7"><label data-t="dob_date">Date</label><div class="sn-date"><span data-show="signed:1"><span data-t="date_day">Nov 16, 2026</span></span></div></div>
       </div>
     </div>
     <div class="sn-tools">
-      <div class="sn-tabs"><span>TOOLS</span><span class="on">FIELDS</span></div>
+      <div class="sn-tabs"><span data-t="dob_tools">TOOLS</span><span class="on" data-t="dob_fields">FIELDS</span></div>
       <div class="sn-tl">
-        <span><svg viewBox="0 0 24 24"><path d="M4 17c3-6 5-9 7-9s-1 8 1 8 3-4 4-4 1 3 4 3"/></svg>Signature</span>
-        <span><svg viewBox="0 0 24 24"><path d="M6 18V6l5 8 5-8v12"/></svg>Initials</span>
-        <span><svg viewBox="0 0 24 24"><path d="M6 6h12M12 6v13"/></svg>Text</span>
-        <span><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Date</span>
-        <span><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 12l2 2 4-4"/></svg>Checkbox</span>
+        <span><svg viewBox="0 0 24 24"><path d="M4 17c3-6 5-9 7-9s-1 8 1 8 3-4 4-4 1 3 4 3"/></svg><span data-t="tl_sig">Signature</span></span>
+        <span><svg viewBox="0 0 24 24"><path d="M6 18V6l5 8 5-8v12"/></svg><span data-t="tl_ini">Initials</span></span>
+        <span><svg viewBox="0 0 24 24"><path d="M6 6h12M12 6v13"/></svg><span data-t="tl_txt">Text</span></span>
+        <span><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span data-t="tl_date">Date</span></span>
+        <span><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 12l2 2 4-4"/></svg><span data-t="tl_chk">Checkbox</span></span>
       </div>
     </div>
     <div class="sn-edfoot">
-      <button class="sn-cta" data-show="signed:0" data-padopen>Sign Myself</button>
-      <button class="sn-cta" data-show="signed:1" data-go="next">Done, it’s signed</button>
+      <button class="sn-cta" data-show="signed:0" data-padopen><span data-t="sign_myself">Sign Myself</span></button>
+      <button class="sn-cta" data-show="signed:1" data-go="next"><span data-t="dob_doneok">Done, it’s signed</span></button>
     </div>
     <div class="sn-pad" id="snPad">
       <div class="sn-padin">
-        <div class="sn-padh"><button data-padclear>Clear</button><span>Draw your signature</span><button data-padok>Done</button></div>
+        <div class="sn-padh"><button data-padclear data-t="pad_clear">Clear</button><span data-t="pad_h">Draw your signature</span><button data-padok data-t="done">Done</button></div>
         <canvas class="sn-canvas" width="660" height="300"></canvas>
-        <p class="sn-padhint">Sign with your finger. Done with nothing drawn uses a sample signature.</p>
+        <p class="sn-padhint" data-t="pad_hint">Sign with your finger. Done with nothing drawn uses a sample signature.</p>
       </div>
     </div>
   </div>
@@ -1329,20 +1343,20 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
 <!-- C · first value: signers, order and roles, and what makes it legally binding -->
 <section class="scr" data-id="do-c" data-ad="c">
   <div class="body" style="background:var(--b-paper)">
-    <div class="sn-top"><button class="sn-back" data-back aria-label="Back">‹</button><b style="font:600 16px var(--b-font);color:var(--b-ink)">Agreement.pdf</b><span style="width:22px"></span></div>
+    <div class="sn-top"><button class="sn-back" data-back aria-label="Back">‹</button><b style="font:600 16px var(--b-font);color:var(--b-ink)" data-t="doc_title">Agreement.pdf</b><span style="width:22px"></span></div>
     <div class="sn-card" data-hl="1 c2">
-      <div class="sn-tog" style="margin-bottom:6px"><b style="font:700 16px var(--b-font)">Signers</b><span data-show="who:many" style="display:flex;align-items:center;gap:8px;font:400 13.5px var(--b-font);color:var(--b-ink2)">Signing order <span class="sn-sw"></span></span></div>
-      <div class="sn-signer"><i>1</i><div><b>You</b><small>alex@example.com</small></div><span class="sn-role">Signer</span></div>
-      <div class="sn-signer" data-show="who:two"><i>2</i><div><b>The other party</b><small>Invite by email or link</small></div><span class="sn-role">Signer</span></div>
-      <div class="sn-signer" data-show="who:many"><i>2</i><div><b>Second party</b><small>Signs after you</small></div><span class="sn-role">Signer</span></div>
-      <div class="sn-signer" data-show="who:many"><i>3</i><div><b>Third party</b><small>Signs last</small></div><span class="sn-role">Signer</span></div>
+      <div class="sn-tog" style="margin-bottom:6px"><b style="font:700 16px var(--b-font)" data-t="doc_signers">Signers</b><span data-show="who:many" style="display:flex;align-items:center;gap:8px;font:400 13.5px var(--b-font);color:var(--b-ink2)"><span data-t="doc_order">Signing order</span> <span class="sn-sw"></span></span></div>
+      <div class="sn-signer"><i>1</i><div><b data-t="doc_you">You</b><small>alex@example.com</small></div><span class="sn-role" data-t="doc_role">Signer</span></div>
+      <div class="sn-signer" data-show="who:two"><i>2</i><div><b data-t="doc_p2">The other party</b><small data-t="doc_p2s">Invite by email or link</small></div><span class="sn-role" data-t="doc_role">Signer</span></div>
+      <div class="sn-signer" data-show="who:many"><i>2</i><div><b data-t="doc_m2">Second party</b><small data-t="doc_m2s">Signs after you</small></div><span class="sn-role" data-t="doc_role">Signer</span></div>
+      <div class="sn-signer" data-show="who:many"><i>3</i><div><b data-t="doc_m3">Third party</b><small data-t="doc_m3s">Signs last</small></div><span class="sn-role" data-t="doc_role">Signer</span></div>
     </div>
     <div class="sn-card sn-legal" data-hl="c2">
-      <p><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7.5-7 9-4-1.5-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Legally binding e-signatures, compliant with ESIGN, UETA, and eIDAS</span></p>
-      <p><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg><span>Detailed audit trail with timestamps, IP addresses, and signer info</span></p>
-      <p><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>256-bit encryption for data in transit and at rest</span></p>
+      <p><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7.5-7 9-4-1.5-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-t="leg_1">Legally binding e-signatures, compliant with ESIGN, UETA, and eIDAS</span></p>
+      <p><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg><span data-t="leg_2">Detailed audit trail with timestamps, IP addresses, and signer info</span></p>
+      <p><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span data-t="leg_3">256-bit encryption for data in transit and at rest</span></p>
     </div>
-    <div class="sn-foot"><button class="sn-cta" data-go="next">Prepare agreement</button></div>
+    <div class="sn-foot"><button class="sn-cta" data-go="next" data-t="doc_cta">Prepare agreement</button></div>
   </div>
 </section>
 
@@ -1353,22 +1367,22 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
     <div class="sn-pws">
       <div class="sn-pwhero"><img src="assets/crop/pw-hero.png" alt=""></div>
       <div class="sn-pwin">
-        <h1 class="sn-pwh" data-hl="2 a3">Get every <span data-bind="sendpl"></span> signed from your phone</h1>
-        <p class="sn-s">Gain access to a full suite of features. You can cancel your Trial at any time.</p>
+        <h1 class="sn-pwh" data-hl="2 a3" data-t="pwa_h">Get every <span data-bind="sendpl"></span> signed from your phone</h1>
+        <p class="sn-s" data-t="pw_sub">Gain access to a full suite of features. You can cancel your Trial at any time.</p>
         <div class="sn-plans" data-hl="4">
-          <button class="sn-plan" data-pick="plan:year"><span class="sn-save">Save 60%</span><div><b>Yearly</b><span class="sn-tr">7 days free trial included</span><small><b>$95.99</b> a year ($7.99/month)</small></div></button>
-          <button class="sn-plan" data-pick="plan:month"><div><b>Monthly</b><span class="sn-tr">7 days free trial included</span><small><b>$19.99</b> a month</small></div></button>
+          <button class="sn-plan" data-pick="plan:year"><span class="sn-save" data-t="pw_save">Save 60%</span><div><b data-t="pw_year">Yearly</b><span class="sn-tr" data-t="pw_trial">7 days free trial included</span><small data-t="pw_yrprice"><b>$95.99</b> a year ($8.00/month)</small></div></button>
+          <button class="sn-plan" data-pick="plan:month"><div><b data-t="pw_month">Monthly</b><span class="sn-tr" data-t="pw_trial">7 days free trial included</span><small data-t="pw_moprice"><b>$19.99</b> a month</small></div></button>
         </div>
-        <p class="sn-get-h">Here’s what you’re getting</p>
-        <div class="sn-feat" data-hl="a3"><i><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-6z"/></svg></i><div><b>Send Document Invites</b><span>Invite anyone to sign your document, facilitating a streamlined process.</span></div></div>
-        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M12 9v7"/></svg></i><div><b>Templates</b><span>Save time by creating document templates for multiple reuse.</span></div></div>
-        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><path d="M12 16V5M7 10l5-5 5 5M5 19h14"/></svg></i><div><b>Unlimited Document Uploads</b><span>Upload an unlimited number of documents to the platform.</span></div></div>
+        <p class="sn-get-h" data-t="pw_what">Here’s what you’re getting</p>
+        <div class="sn-feat" data-hl="a3"><i><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-6z"/></svg></i><div><b data-t="f_inv">Send Document Invites</b><span data-t="f_inv_d">Invite anyone to sign your document, facilitating a streamlined process.</span></div></div>
+        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M12 9v7"/></svg></i><div><b data-t="f_tpl">Templates</b><span data-t="f_tpl_d">Save time by creating document templates for multiple reuse.</span></div></div>
+        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><path d="M12 16V5M7 10l5-5 5 5M5 19h14"/></svg></i><div><b data-t="f_up">Unlimited Document Uploads</b><span data-t="f_up_d">Upload an unlimited number of documents to the platform.</span></div></div>
       </div>
     </div>
     <div class="sn-dock">
-      <p class="sn-dproof" data-hl="5"><i>★</i> 4.5 <span>· 18K ratings · 7 000 000+ downloads</span></p>
-      <button class="sn-cta" data-pick="paid:1" data-advance="signup">Start my 7-day Free Trial</button>
-      <p class="sn-trust"><span data-bind="then"></span> Cancel anytime.</p>
+      <p class="sn-dproof" data-hl="5" data-t="proof_dl"><i>★</i> 4.5 <span>· 18K ratings · 7 000 000+ downloads</span></p>
+      <button class="sn-cta" data-pick="paid:1" data-advance="signup"><span data-t="pw_cta">Start my 7-day Free Trial</span></button>
+      <p class="sn-trust"><span data-bind="then"></span> <span data-t="cancel_any">Cancel anytime.</span></p>
     </div>
   </div>
 </section>
@@ -1379,22 +1393,22 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
   <div class="body sn-pw">
     <div class="sn-pws" style="padding:64px 18px 14px;gap:13px">
       <div class="sn-mini"><img src="assets/crop/wordmark.png" alt="SignNow"></div>
-      <span class="sn-chip" data-hl="2">✓ Sample Document · signed</span>
-      <h1 class="sn-pwh" data-hl="2 b3">Your signature is ready. Sign the real one next.</h1>
+      <span class="sn-chip" data-hl="2" data-t="pwb_chip">✓ Sample Document · signed</span>
+      <h1 class="sn-pwh" data-hl="2 b3" data-t="pwb_h">Your signature is ready. Sign the real one next.</h1>
       <ol class="sn-time" data-hl="b3">
-        <li><i>✓</i><b>Today</b><span>Business, free for 7 days: open <span data-bind="srcshort"></span>, sign, send and upload as much as you like.</span></li>
-        <li class="n"><i>6</i><b>Day 6</b><span>Cancel anytime in Settings, at least a day before the trial ends, and pay nothing.</span></li>
-        <li class="n"><i>7</i><b>Day 7</b><span>Your plan starts: <span data-bind="planline"></span>.</span></li>
+        <li><i>✓</i><b data-t="pwb_t1">Today</b><span data-t="pwb_t1s">Business, free for 7 days: open <span data-bind="srcshort"></span>, sign, send and upload as much as you like.</span></li>
+        <li class="n"><i>6</i><b data-t="pwb_t2">Day 6</b><span data-t="pwb_t2s">Cancel anytime in Settings, at least a day before the trial ends, and pay nothing.</span></li>
+        <li class="n"><i>7</i><b data-t="pwb_t3">Day 7</b><span data-t="pwb_t3s">Your plan starts: <span data-bind="planline"></span>.</span></li>
       </ol>
       <div class="sn-plans" data-hl="4">
-        <button class="sn-plan" data-pick="plan:year"><span class="sn-save">Save 60%</span><div><b>Yearly</b><span class="sn-tr">7 days free</span><small><b>$95.99</b> a year ($7.99/month)</small></div></button>
-        <button class="sn-plan" data-pick="plan:month"><div><b>Monthly</b><span class="sn-tr">7 days free</span><small><b>$19.99</b> a month</small></div></button>
+        <button class="sn-plan" data-pick="plan:year"><span class="sn-save" data-t="pw_save">Save 60%</span><div><b data-t="pw_year">Yearly</b><span class="sn-tr" data-t="pw_free7">7 days free</span><small data-t="pw_yrprice"><b>$95.99</b> a year ($8.00/month)</small></div></button>
+        <button class="sn-plan" data-pick="plan:month"><div><b data-t="pw_month">Monthly</b><span class="sn-tr" data-t="pw_free7">7 days free</span><small data-t="pw_moprice"><b>$19.99</b> a month</small></div></button>
       </div>
     </div>
     <div class="sn-dock">
-      <p class="sn-dproof" data-hl="5"><i>★</i> 4.5 <span>· 18K ratings on the App Store</span></p>
-      <button class="sn-cta" data-pick="paid:1" data-advance="signup">Start my 7-day Free Trial</button>
-      <p class="sn-trust">No charge today. <span data-bind="then"></span></p>
+      <p class="sn-dproof" data-hl="5" data-t="proof_as"><i>★</i> 4.5 <span>· 18K ratings on the App Store</span></p>
+      <button class="sn-cta" data-pick="paid:1" data-advance="signup"><span data-t="pw_cta">Start my 7-day Free Trial</span></button>
+      <p class="sn-trust"><span data-t="pwb_nocharge">No charge today.</span> <span data-bind="then"></span></p>
     </div>
   </div>
 </section>
@@ -1404,19 +1418,19 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
   <button class="sn-x dk" data-go="signup" data-closepw aria-label="Close">✕</button>
   <div class="body sn-pw">
     <div class="sn-pws" style="padding:96px 18px 14px;gap:12px">
-      <div class="sn-laur" data-hl="5 c3"><img src="assets/crop/laurel-l.png" alt=""><div><i>★★★★★</i><b>7 000 000+ downloads</b><span>Featured in 100+ countries</span></div><img src="assets/crop/laurel-r.png" alt=""></div>
+      <div class="sn-laur" data-hl="5 c3"><img src="assets/crop/laurel-l.png" alt=""><div><i>★★★★★</i><b data-t="laur_dl">7 000 000+ downloads</b><span data-t="laur_c">Featured in 100+ countries</span></div><img src="assets/crop/laurel-r.png" alt=""></div>
       <h1 class="sn-pwh" data-hl="2"><span data-bind="whohead"></span></h1>
-      <div class="sn-badges"><span>ESIGN</span><span>UETA</span><span>eIDAS</span><span>Audit trail</span></div>
-      <div class="sn-quote" data-hl="5 c3"><b>I really enjoy this app</b><p>it’s reliable and very easy to navigate through. I highly recommend it!</p><div><i>★★★★★</i><span>by Barbara Cerullo</span></div></div>
+      <div class="sn-badges"><span>ESIGN</span><span>UETA</span><span>eIDAS</span><span data-t="pwc_audit">Audit trail</span></div>
+      <div class="sn-quote" data-hl="5 c3"><b>I really enjoy this app</b><p>it’s reliable and very easy to navigate through. I highly recommend it!</p><div><i>★★★★★</i><span data-t="quote_by">by Barbara Cerullo</span></div></div>
       <div class="sn-plans" data-hl="4">
-        <button class="sn-plan" data-pick="plan:year"><span class="sn-save">Save 60%</span><div><b>Business · Yearly</b><small><b>$95.99</b> a year ($7.99/month)</small></div></button>
-        <button class="sn-plan" data-pick="plan:month"><div><b>Business · Monthly</b><small><b>$19.99</b> a month</small></div></button>
+        <button class="sn-plan" data-pick="plan:year"><span class="sn-save" data-t="pw_save">Save 60%</span><div><b data-t="pwc_year">Business · Yearly</b><small data-t="pw_yrprice"><b>$95.99</b> a year ($8.00/month)</small></div></button>
+        <button class="sn-plan" data-pick="plan:month"><div><b data-t="pwc_month">Business · Monthly</b><small data-t="pw_moprice"><b>$19.99</b> a month</small></div></button>
       </div>
     </div>
     <div class="sn-dock">
-      <p class="sn-dproof" data-hl="5"><i>★</i> 4.5 <span>· 18K ratings on the US App Store</span></p>
-      <button class="sn-cta" data-pick="paid:1" data-advance="signup">Start my 7-day Free Trial</button>
-      <p class="sn-trust">7 days free. <span data-bind="then"></span> Cancel anytime.</p>
+      <p class="sn-dproof" data-hl="5" data-t="proof_us"><i>★</i> 4.5 <span>· 18K ratings on the US App Store</span></p>
+      <button class="sn-cta" data-pick="paid:1" data-advance="signup"><span data-t="pw_cta">Start my 7-day Free Trial</span></button>
+      <p class="sn-trust"><span data-t="pwc_free">7 days free.</span> <span data-bind="then"></span> <span data-t="cancel_any">Cancel anytime.</span></p>
     </div>
   </div>
 </section>
@@ -1427,17 +1441,17 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
     <div class="sn-sky" style="padding-bottom:30px">
       <img class="sn-word" src="assets/crop/wordmark.png" alt="SignNow">
       <span class="sn-chip" data-hl="3" style="align-self:flex-start;background:var(--b-bg)">✓ <span data-bind="docready"></span></span>
-      <h1 class="sn-big"><span class="sn-hl">Secure online signing</span>, wherever it happens</h1>
+      <h1 class="sn-big" data-t="su_h"><span class="sn-hl">Secure online signing</span>, wherever it happens</h1>
     </div>
     <div class="sn-sheet" style="gap:11px">
-      <div class="sn-field">Enter email</div>
-      <div class="sn-field">Enter password</div>
-      <button class="sn-cta" data-go="home">Create Free Account</button>
-      <p class="sn-small">Already have an account? <a>Log In</a></p>
-      <div class="sn-or">or</div>
-      <button class="sn-soc" data-go="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9s-2-.9-3.3-.9c-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6s1.8-.8 3.3-.8 2 .8 3.3.8 2.2-1.3 3-2.5c1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM14 5.1c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>Continue with Apple</button>
-      <button class="sn-soc" data-go="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" d="M20 12.2c0-.6 0-1.2-.2-1.7H12v3.3h4.5a4 4 0 0 1-1.7 2.6M20 12.2A8 8 0 1 1 17.4 6"/></svg>Continue with Google</button>
-      <p class="sn-small" style="margin-top:auto">By using SignNow you agree to the <a>Terms of Service</a> and <a>Privacy Policy</a></p>
+      <div class="sn-field" data-t="su_email">Enter email</div>
+      <div class="sn-field" data-t="su_pass">Enter password</div>
+      <button class="sn-cta" data-go="home" data-t="su_cta">Create Free Account</button>
+      <p class="sn-small" data-t="have">Already have an account? <a>Log In</a></p>
+      <div class="sn-or" data-t="su_or">or</div>
+      <button class="sn-soc" data-go="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9s-2-.9-3.3-.9c-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6s1.8-.8 3.3-.8 2 .8 3.3.8 2.2-1.3 3-2.5c1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM14 5.1c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg><span data-t="su_apple">Continue with Apple</span></button>
+      <button class="sn-soc" data-go="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" d="M20 12.2c0-.6 0-1.2-.2-1.7H12v3.3h4.5a4 4 0 0 1-1.7 2.6M20 12.2A8 8 0 1 1 17.4 6"/></svg><span data-t="su_google">Continue with Google</span></button>
+      <p class="sn-small" style="margin-top:auto" data-t="su_terms">By using SignNow you agree to the <a>Terms of Service</a> and <a>Privacy Policy</a></p>
     </div>
   </div>
 </section>
@@ -1446,20 +1460,20 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
 <section class="scr" data-id="home">
   <div class="body sn-home">
     <div class="sn-hnav"><span>☰</span><span>⏷</span></div>
-    <h1 class="sn-hh">Documents</h1>
-    <div class="sn-search">⌕ Search...</div>
-    <div class="sn-banner" data-show="paid:0"><span>No Active Plan</span><b>Start Free Trial</b></div>
-    <div class="sn-banner pd" data-show="paid:1"><span>Business · free trial</span><b>7 days left</b></div>
+    <h1 class="sn-hh" data-t="hm_h">Documents</h1>
+    <div class="sn-search" data-t="hm_search">⌕ Search...</div>
+    <div class="sn-banner" data-show="paid:0"><span data-t="hm_none">No Active Plan</span><b data-t="hm_start">Start Free Trial</b></div>
+    <div class="sn-banner pd" data-show="paid:1"><span data-t="hm_trial">Business · free trial</span><b data-t="hm_left">7 days left</b></div>
     <div class="sn-list">
-      <div class="sn-item"><span class="sn-doci"><i></i><i></i><i></i><i></i></span><div><b data-bind="homedoc"></b><small>Nov 16, 2026 at 9:41 AM</small><span class="sn-st" data-bind="homest"></span></div><span>⋯</span></div>
+      <div class="sn-item"><span class="sn-doci"><i></i><i></i><i></i><i></i></span><div><b data-bind="homedoc"></b><small data-t="date_time">Nov 16, 2026 at 9:41 AM</small><span class="sn-st" data-bind="homest"></span></div><span>⋯</span></div>
     </div>
-    <div class="sn-hcard"><b>Sign a document</b><span>Fill out, sign, and export a document</span><button class="sn-hbtn">✍ Sign Myself</button></div>
+    <div class="sn-hcard"><b data-t="hm_card">Sign a document</b><span data-t="hm_card_s">Fill out, sign, and export a document</span><button class="sn-hbtn" data-t="hm_sm">✍ Sign Myself</button></div>
     <div class="sn-tabbar">
-      <span class="on"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M10 12h5M10 16h5"/></svg>Documents</span>
-      <span><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M9 10h6M12 10v6"/></svg>Templates</span>
-      <span><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg>Create</span>
-      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg>Account</span>
-      <span><svg viewBox="0 0 24 24"><path d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13"/></svg>Trash Bin</span>
+      <span class="on"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M10 12h5M10 16h5"/></svg><span data-t="tab_1">Documents</span></span>
+      <span><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M9 10h6M12 10v6"/></svg><span data-t="tab_2">Templates</span></span>
+      <span><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg><span data-t="tab_3">Create</span></span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg><span data-t="tab_4">Account</span></span>
+      <span><svg viewBox="0 0 24 24"><path d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13"/></svg><span data-t="tab_5">Trash Bin</span></span>
     </div>
   </div>
 </section>
@@ -1471,24 +1485,24 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
     <div class="sn-pws">
       <div class="sn-pwhero"><img src="assets/crop/pw-hero.png" alt=""></div>
       <div class="sn-pwin">
-        <h1 class="sn-pwh">Upgrade Your Plan</h1>
-        <p class="sn-s">Gain access to a full suite of features. You can cancel your Trial at any time.</p>
+        <h1 class="sn-pwh" data-t="td_h">Upgrade Your Plan</h1>
+        <p class="sn-s" data-t="pw_sub">Gain access to a full suite of features. You can cancel your Trial at any time.</p>
         <div class="sn-plans">
-          <div class="sn-plan on"><div><b>Business</b><span class="sn-tr">7 days free trial included</span><small><b>95.99 USD</b> annually (<b>7.99 USD</b>/mo…</small></div></div>
-          <div class="sn-plan"><div><b>Premium</b><span class="sn-tr">7 days free trial included</span><small>yearly price: not in the public list</small></div></div>
+          <div class="sn-plan on"><div><b>Business</b><span class="sn-tr" data-t="pw_trial">7 days free trial included</span><small data-t="td_yr"><b>95.99 USD</b> annually (<b>8.00 USD</b>/mo…</small></div></div>
+          <div class="sn-plan"><div><b>Premium</b><span class="sn-tr" data-t="pw_trial">7 days free trial included</span><small data-t="td_prem">yearly price: not in the public list</small></div></div>
         </div>
-        <div class="sn-annual">Pay annually <span class="sn-off">-60% OFF</span><span class="sn-sw"></span></div>
-        <p class="sn-get-h">Here’s what you’re getting</p>
-        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><path d="M12 16V5M7 10l5-5 5 5M5 19h14"/></svg></i><div><b>Unlimited Document Uploads</b><span>Upload an unlimited number of documents to the platform.</span></div></div>
-        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-6z"/></svg></i><div><b>Send Document Invites</b><span>Invite anyone to sign your document, facilitating a streamlined process.</span></div></div>
-        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M12 9v7"/></svg></i><div><b>Templates</b><span>Save time by creating document templates for multiple reuse.</span></div></div>
-        <div class="sn-laur"><img src="assets/crop/laurel-l.png" alt=""><div><i>★★★★★</i><b>7 000 000+ downloads</b><span>Featured in 100+ countries</span></div><img src="assets/crop/laurel-r.png" alt=""></div>
-        <p class="sn-get-h">What clients say</p>
-        <div class="sn-quote"><b>I really enjoy this app</b><p>it’s reliable and very easy to navigate through. I highly recommend it!</p><div><i>★★★★★</i><span>by Barbara Cerullo</span></div></div>
-        <p class="sn-note">Rebuilt from your recording, made on a Vietnamese storefront (2,499,000 VND a year for Business, “-58% OFF”). Prices here are the US App Store’s. Every install meets this after sign-up and the email check, before any document.</p>
+        <div class="sn-annual"><span data-t="td_ann">Pay annually</span> <span class="sn-off" data-t="td_off">-60% OFF</span><span class="sn-sw"></span></div>
+        <p class="sn-get-h" data-t="pw_what">Here’s what you’re getting</p>
+        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><path d="M12 16V5M7 10l5-5 5 5M5 19h14"/></svg></i><div><b data-t="f_up">Unlimited Document Uploads</b><span data-t="f_up_d">Upload an unlimited number of documents to the platform.</span></div></div>
+        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-6z"/></svg></i><div><b data-t="f_inv">Send Document Invites</b><span data-t="f_inv_d">Invite anyone to sign your document, facilitating a streamlined process.</span></div></div>
+        <div class="sn-feat"><i><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M12 9v7"/></svg></i><div><b data-t="f_tpl">Templates</b><span data-t="f_tpl_d">Save time by creating document templates for multiple reuse.</span></div></div>
+        <div class="sn-laur"><img src="assets/crop/laurel-l.png" alt=""><div><i>★★★★★</i><b data-t="laur_dl">7 000 000+ downloads</b><span data-t="laur_c">Featured in 100+ countries</span></div><img src="assets/crop/laurel-r.png" alt=""></div>
+        <p class="sn-get-h" data-t="td_say">What clients say</p>
+        <div class="sn-quote"><b>I really enjoy this app</b><p>it’s reliable and very easy to navigate through. I highly recommend it!</p><div><i>★★★★★</i><span data-t="quote_by">by Barbara Cerullo</span></div></div>
+        <p class="sn-note" data-t="td_note">Rebuilt from your recording, made on a Vietnamese storefront (2,499,000 VND a year for Business, “-58% OFF”). Prices here are the US App Store’s. Every install meets this after sign-up and the email check, before any document.</p>
       </div>
     </div>
-    <div class="sn-dock"><button class="sn-cta">Start my 7-day Free Trial</button></div>
+    <div class="sn-dock"><button class="sn-cta" data-t="pw_cta">Start my 7-day Free Trial</button></div>
   </div>
 </section>
 <!-- SCREENS:END -->
@@ -1582,19 +1596,19 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
  },
  "chips": {
   "ad": "The ad",
-  "welcome": "Welcome",
-  "ask-a": "What you send",
-  "ask-b": "Where it is",
-  "ask-c": "Who signs",
-  "do-a": "First invite",
-  "do-b": "First signature",
-  "do-c": "Signers",
-  "paywall-a": "Paywall · result first",
-  "paywall-b": "Paywall · trial first",
-  "paywall-c": "Paywall · proof first",
+  "welcome": "Arrive",
+  "ask-a": "One question",
+  "ask-b": "One question",
+  "ask-c": "One question",
+  "do-a": "First win",
+  "do-b": "First win",
+  "do-c": "First win",
+  "paywall-a": "Paywall",
+  "paywall-b": "Paywall",
+  "paywall-c": "Paywall",
   "signup": "Account",
-  "home": "Documents",
-  "today": "Today’s paywall"
+  "home": "In the app",
+  "today": "Today"
  },
  "hero": [
   "do-b",
@@ -1608,36 +1622,36 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
  "ideas": [
   {
    "screen": "do-a",
-   "title": "Let them sign something before the price",
-   "what": "Today a new user creates an account, waits for “Verify Your Email”, and meets “Upgrade Your Plan” before a single document. Show the first win first: the Sample Document signed with their finger, or a first invite that comes back “Your document has been signed!”.",
+   "title": "Let them sign before the price",
+   "what": "Today a new user makes an account, checks their email and meets “Upgrade Your Plan” before a single document. Here the first win comes first: a sample contract that comes back “Your document has been signed!”, or your Sample Document signed with a finger.",
    "impact": "+10–20%",
    "il": "CR to purchase"
   },
   {
-   "screen": "ask-a",
-   "title": "Ask one thing, and use it on the paywall",
-   "what": "The flow asks nothing today, so the paywall says “Upgrade Your Plan” to everyone. One question that fits the ad (what they send, where the document is, who signs) names the paywall: “Get every sales contract signed from your phone”.",
+   "screen": "paywall-a",
+   "title": "Name the job on the paywall",
+   "what": "Today everyone reads “Upgrade Your Plan”, whichever ad or search they came from. Here one question in each flow (what they send, where the document is, who signs) names the headline: “Get every sales contract signed from your phone”.",
    "impact": "+10–15%",
    "il": "CR to purchase"
   },
   {
    "screen": "signup",
-   "title": "Ask for the account after the first signature",
-   "what": "Email, password and the email check come first today. Move them after the paywall, as the step that saves the document they just signed: your own “Secure online signing, wherever it happens” screen, unchanged.",
+   "title": "Move the account form behind the plan",
+   "what": "Today email, password and “Verify Your Email” come before anything else. Here your own “Secure online signing, wherever it happens” screen comes after the plan, as the step that saves the document they just signed.",
    "impact": "+5–10%",
    "il": "CR · ARPU +10–17%"
   },
   {
-   "screen": "paywall-a",
-   "title": "Make the yearly saving impossible to miss",
-   "what": "The monthly price only appears when “Pay annually” is switched off. Show both plans: $95.99 a year ($7.99 a month) marked “Save 60%” next to $19.99 a month, with what happens after the 7 free days under the button.",
+   "screen": "paywall-b",
+   "title": "Show both plans and the saving",
+   "what": "Today the monthly price only shows when “Pay annually” is switched off. Here both plans sit side by side: $95.99 a year ($8.00 a month) with “Save 60%”, next to $19.99 a month, and what happens after the 7 free days under the button.",
    "impact": "+5–15%",
    "il": "CR · ARPU +10–15%"
   },
   {
    "screen": "paywall-c",
-   "title": "Put your proof next to the button",
-   "what": "“7 000 000+ downloads” and Barbara Cerullo’s review sit at the very bottom of the paywall, and your 4.5 stars from 18K US ratings aren’t on it. Bring them up to where the decision happens.",
+   "title": "Put your 4.5 by the button",
+   "what": "Today the paywall’s proof sits at the very bottom: “7 000 000+ downloads” and one review. Your App Store page shows 4.5 from 18K ratings. Here they sit above the button, in view while the plan is chosen.",
    "impact": "+5–10%",
    "il": "CR to purchase"
   }
@@ -1646,7 +1660,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
   "ad": {
    "idea": 0,
    "t": "Opens where they came from",
-   "why": "Version A opens on your YouTube ad, “Close deals with signNow”; B and C on your Apple Ads search ad for “sign docs” and “agreement”."
+   "why": "Each phone opens where its install came from: your YouTube ad, “Close deals with signNow”, or your Apple Ads search ad for “sign docs” or “agreement”."
   },
   "welcome": {
    "idea": 0,
@@ -1659,7 +1673,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> one question about what they send, <b>because</b> the ad sells closing deals, and the answer names the invite, the notification and the paywall headline.",
    "iv": "CR +5–10%",
    "il": "to purchase",
-   "also": "Version A, recommendation A1."
+   "also": "On the YouTube flow."
   },
   "ask-b": {
    "idea": 2,
@@ -1667,7 +1681,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> asking where their document is, <b>because</b> someone who typed “sign docs” already has one, and the answer picks your own upload source: Load from Device, Cloud or Camera.",
    "iv": "CR +5–10%",
    "il": "to purchase",
-   "also": "Version B, recommendation B1."
+   "also": "On the “sign docs” flow."
   },
   "ask-c": {
    "idea": 2,
@@ -1675,7 +1689,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> asking who signs, <b>because</b> an agreement has two sides, and the answer sets up the signers, the signing order and the paywall headline.",
    "iv": "CR +5–10%",
    "il": "to purchase",
-   "also": "Version C, recommendation C1."
+   "also": "On the “agreement” flow."
   },
   "do-a": {
    "idea": 1,
@@ -1683,7 +1697,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> sending a first invite and showing it come back opened, then signed, <b>because</b> the ad promises “stay in the loop”, and your own notification is the proof.",
    "iv": "CR +10–20%",
    "il": "to purchase",
-   "also": "Version A, recommendation A2. The client is an example; nothing is sent."
+   "also": "On the YouTube flow. The client is an example; nothing is sent."
   },
   "do-b": {
    "idea": 1,
@@ -1691,7 +1705,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> signing your Sample Document with a finger before any price, <b>because</b> a person who searched “sign docs” wants it signed now, and it takes ten seconds.",
    "iv": "CR +10–20%",
    "il": "to purchase",
-   "also": "Version B, recommendation B2. “Sample Document” is in your own Document Upload menu."
+   "also": "On the “sign docs” flow. “Sample Document” is in your own Document Upload menu."
   },
   "do-c": {
    "idea": 1,
@@ -1699,7 +1713,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> setting up the signers and order before the price, with ESIGN, UETA and eIDAS shown, <b>because</b> an agreement only counts when both sides sign and it holds up.",
    "iv": "CR +10–20%",
    "il": "to purchase",
-   "also": "Version C, recommendation C2. The compliance lines are from your App Store listing."
+   "also": "On the “agreement” flow. The compliance lines are from your App Store listing."
   },
   "paywall-a": {
    "idea": 4,
@@ -1715,7 +1729,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> a timeline of the 7 free days with both plans, <b>because</b> a one-off signer worries about being charged, and “cancel in Settings a day before” is Apple’s own rule.",
    "iv": "CR +5–15%",
    "il": "to purchase · ARPU +10–15%",
-   "also": "Also idea 2 (their signed sample on top) and idea 5. Version B, recommendation B3."
+   "also": "Also idea 2 (their signed sample on top) and idea 5. On the “sign docs” flow."
   },
   "paywall-c": {
    "idea": 5,
@@ -1723,7 +1737,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> your “7 000 000+ downloads” laurels, 4.5 stars and Barbara Cerullo’s review above the plans, <b>because</b> someone with an agreement to get signed needs to trust the app first.",
    "iv": "CR +5–10%",
    "il": "to purchase",
-   "also": "Also idea 4 (both plans shown). Version C, recommendation C3."
+   "also": "Also idea 4 (both plans shown). On the “agreement” flow."
   },
   "signup": {
    "idea": 3,
@@ -1731,7 +1745,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "<b>Try</b> your own sign-up screen after the paywall, <b>because</b> today email, password and the email check stand between the install and any document.",
    "iv": "CR +5–10%",
    "il": "to purchase · ARPU +10–17%",
-   "also": "The same for every version. The paywall’s ✕ lands here too: no second paywall."
+   "also": "The same for every flow. The paywall’s ✕ lands here too: no second paywall."
   },
   "home": {
    "idea": 0,
@@ -1744,10 +1758,434 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "why": "Your recorded “Upgrade Your Plan”, rebuilt in US prices. Every install reaches it after sign-up and the email check, whichever ad brought them."
   }
  },
- "langs": [],
- "i18n": {},
- "prices": {},
- "labelsI18n": {},
+ "langs": [
+  {
+   "code": "en",
+   "name": "EN"
+  },
+  {
+   "code": "fr",
+   "name": "FR"
+  },
+  {
+   "code": "es",
+   "name": "ES"
+  }
+ ],
+ "i18n": {
+  "fr": {
+   "yt_tag": "Annonce · 0:23",
+   "yt_dl": "Téléchargez signNow sur l’App Store",
+   "yt_spon": "Sponsorisé · SignNow: e-Signature app",
+   "yt_inst": "Installer",
+   "yt_txt": "« Gagnez du temps et de l’argent. Concluez vos affaires avec signNow. »",
+   "yt_meta": "« Signez des documents et recueillez des signatures en quelques minutes. Et suivez chaque modification. »",
+   "as_cancel": "Annuler",
+   "as_name": "SignNow: e-Signature app",
+   "as_sub": "Signez documents et formulaires PDF",
+   "as_get": "OBTENIR",
+   "as_ad": "Annonce",
+   "wel_h_a": "<span class=\"sn-hl\">Concluez vos affaires</span> avec SignNow, où que vous soyez",
+   "wel_h_b": "<span class=\"sn-hl\">Signez votre document</span> en quelques taps",
+   "wel_h_c": "<span class=\"sn-hl\">Votre contrat signé</span>, avec valeur légale",
+   "proof_as": "<i>★</i> 4,5 <span>· 18 k avis sur l’App Store</span>",
+   "wel_a1": "Envoyez des documents à un ou plusieurs destinataires, par e-mail ou lien",
+   "wel_a2": "Soyez averti en temps réel quand un document est ouvert ou signé",
+   "wel_a3": "Créez des modèles réutilisables pour vos envois fréquents",
+   "wel_b1": "Signez des PDF, des fichiers Word et d’autres formats en quelques taps",
+   "wel_b2": "Remplissez des formulaires, ajoutez du texte, des cases, des dates et des tampons",
+   "wel_b3": "Fonctionne hors ligne : signez sans Internet, synchronisez ensuite",
+   "wel_c1": "Définissez l’ordre de signature et attribuez des rôles",
+   "wel_c2": "Signatures électroniques valables, conformes ESIGN, UETA et eIDAS",
+   "wel_c3": "Pistes d’audit détaillées : horodatage, adresses IP, infos des signataires",
+   "wel_cta": "Commencer",
+   "have": "Déjà un compte ? <a>Se connecter</a>",
+   "next": "Continuer",
+   "aska_h": "Qu’envoyez-vous à signer ?",
+   "aska_s": "Nous préparons votre première invitation. Vous pourrez tout envoyer ensuite.",
+   "aska_o1": "Contrats de vente et devis",
+   "aska_o2": "Factures et bons de commande",
+   "aska_o3": "Documents RH et d’embauche",
+   "aska_o4": "Baux et documents immobiliers",
+   "askb_h": "Où se trouve le document à signer ?",
+   "askb_s": "La prochaine fois, on l’ouvrira de là. D’abord, une signature sur notre exemple.",
+   "askb_o1": "Sur mon téléphone<small>Charger depuis l’appareil</small>",
+   "askb_o2": "Google Drive, Dropbox, OneDrive<small>Charger depuis le cloud</small>",
+   "askb_o3": "Sur papier : je le scanne<small>Appareil photo</small>",
+   "askb_o4": "Dans un e-mail<small>Importer depuis un e-mail</small>",
+   "askc_h": "Qui doit signer ce contrat ?",
+   "askc_s": "Nous configurons les signataires et l’ordre pour vous.",
+   "askc_o1": "Juste moi",
+   "askc_o2": "Moi et une autre personne",
+   "askc_o3": "Plusieurs personnes, dans l’ordre",
+   "doa_title": "Inviter à signer",
+   "doa_field": "Champ de signature · Signataire 1",
+   "doa_signer": "Signataire 1",
+   "doa_notify": "Me prévenir à la signature",
+   "doa_st1": "<i>✓</i>Envoyé<small>à client@example.com · à l’instant</small>",
+   "doa_st2": "<i>✓</i>Ouvert<small>un instant après</small>",
+   "doa_st3": "<i>✓</i>Signé<small>terminé</small>",
+   "noti_now": "maintenant",
+   "noti_h": "Votre document a été signé !",
+   "noti_by": ", par client@example.com",
+   "doa_demo": "Une démo : le client et la signature sont des exemples, rien n’a été envoyé.",
+   "doa_send": "Envoyer l’invitation",
+   "doc_sample": "Document d’exemple",
+   "done": "Terminé",
+   "stamp": "Signé",
+   "dob_h": "Contrat de service",
+   "dob_sig": "Signature",
+   "dob_tap": "Touchez pour signer",
+   "dob_date": "Date",
+   "date_day": "16 nov. 2026",
+   "dob_tools": "OUTILS",
+   "dob_fields": "CHAMPS",
+   "tl_sig": "Signature",
+   "tl_ini": "Initiales",
+   "tl_txt": "Texte",
+   "tl_date": "Date",
+   "tl_chk": "Case",
+   "sign_myself": "Me signer",
+   "dob_doneok": "Terminé, c’est signé",
+   "pad_clear": "Effacer",
+   "pad_h": "Votre signature",
+   "pad_hint": "Signez avec le doigt. Sans tracé, une signature d’exemple est utilisée.",
+   "doc_title": "Contrat.pdf",
+   "doc_signers": "Signataires",
+   "doc_order": "Ordre de signature",
+   "doc_you": "Vous",
+   "doc_role": "Signataire",
+   "doc_p2": "L’autre partie",
+   "doc_p2s": "Invitation par e-mail ou lien",
+   "doc_m2": "Deuxième partie",
+   "doc_m2s": "Signe après vous",
+   "doc_m3": "Troisième partie",
+   "doc_m3s": "Signe en dernier",
+   "leg_1": "Signatures électroniques valables, conformes ESIGN, UETA et eIDAS",
+   "leg_2": "Piste d’audit détaillée : horodatage, adresses IP, infos des signataires",
+   "leg_3": "Chiffrement 256 bits, en transit et au repos",
+   "doc_cta": "Préparer le contrat",
+   "pw_save": "−{save}",
+   "pw_year": "Annuel",
+   "pw_month": "Mensuel",
+   "pw_trial": "7 jours d’essai gratuit inclus",
+   "pw_free7": "7 jours gratuits",
+   "pw_yrprice": "<b>{yr}</b> par an ({yrmo}/mois)",
+   "pw_moprice": "<b>{mo}</b> par mois",
+   "pw_sub": "Accédez à toutes les fonctionnalités. Vous pouvez annuler l’essai à tout moment.",
+   "pw_what": "Ce que vous obtenez",
+   "f_inv": "Envoi d’invitations à signer",
+   "f_inv_d": "Invitez qui vous voulez à signer votre document, simplement.",
+   "f_tpl": "Modèles",
+   "f_tpl_d": "Gagnez du temps avec des modèles de documents réutilisables.",
+   "f_up": "Imports de documents illimités",
+   "f_up_d": "Importez un nombre illimité de documents sur la plateforme.",
+   "pw_cta": "Démarrer mon essai gratuit de 7 jours",
+   "proof_dl": "<i>★</i> 4,5 <span>· 18 k avis · 7 000 000+ téléchargements</span>",
+   "proof_us": "<i>★</i> 4,5 <span>· 18 k avis sur l’App Store américain</span>",
+   "cancel_any": "Sans engagement.",
+   "pwa_h": "Faites signer chaque <span data-bind=\"sendpl\"></span> sur mobile",
+   "pwb_chip": "✓ Document d’exemple · signé",
+   "pwb_h": "Votre signature est prête. Signez le vrai document ensuite.",
+   "pwb_t1": "Aujourd’hui",
+   "pwb_t1s": "Business gratuit 7 jours : ouvrez <span data-bind=\"srcshort\"></span>, signez, envoyez et importez à volonté.",
+   "pwb_t2": "Jour 6",
+   "pwb_t2s": "Annulez dans Réglages au moins un jour avant la fin de l’essai, et ne payez rien.",
+   "pwb_t3": "Jour 7",
+   "pwb_t3s": "Votre offre démarre : <span data-bind=\"planline\"></span>.",
+   "pwb_nocharge": "Rien à payer aujourd’hui.",
+   "laur_dl": "7 M+ téléchargements",
+   "laur_c": "Mis en avant dans 100+ pays",
+   "pwc_audit": "Piste d’audit",
+   "quote_by": "par Barbara Cerullo",
+   "pwc_year": "Business · Annuel",
+   "pwc_month": "Business · Mensuel",
+   "pwc_free": "7 jours gratuits.",
+   "su_h": "<span class=\"sn-hl\">Signature en ligne sécurisée</span>, où que vous soyez",
+   "su_email": "Saisissez votre e-mail",
+   "su_pass": "Saisissez votre mot de passe",
+   "su_cta": "Créer un compte gratuit",
+   "su_or": "ou",
+   "su_apple": "Continuer avec Apple",
+   "su_google": "Continuer avec Google",
+   "su_terms": "En utilisant SignNow, vous acceptez les <a>Conditions d’utilisation</a> et la <a>Politique de confidentialité</a>",
+   "hm_h": "Documents",
+   "hm_search": "⌕ Rechercher...",
+   "hm_none": "Aucune offre active",
+   "hm_start": "Démarrer l’essai",
+   "hm_trial": "Business · essai gratuit",
+   "hm_left": "7 jours restants",
+   "date_time": "16 nov. 2026 à 09:41",
+   "hm_card": "Signer un document",
+   "hm_card_s": "Remplissez, signez et exportez un document",
+   "hm_sm": "✍ Me signer",
+   "tab_1": "Documents",
+   "tab_2": "Modèles",
+   "tab_3": "Créer",
+   "tab_4": "Compte",
+   "tab_5": "Corbeille",
+   "td_h": "Améliorez votre offre",
+   "td_yr": "<b>{yr}</b> par an (<b>{yrmo}</b>/mois…",
+   "td_prem": "prix annuel non affiché ici",
+   "td_ann": "Payer à l’année",
+   "td_off": "−{save}",
+   "td_say": "Ce que disent les clients",
+   "td_note": "Reconstruit d’après votre enregistrement, fait sur l’App Store vietnamien (2 499 000 VND par an pour Business, « -58% OFF »). Prix de l’App Store français. Chaque installation voit cet écran après l’inscription et la vérification de l’e-mail, avant tout document.",
+   "js_sendpl_sales": "contrat de vente",
+   "js_sendpl_po": "bon de commande",
+   "js_sendpl_hr": "promesse d’embauche",
+   "js_sendpl_lease": "bail",
+   "js_sendpl_doc": "document",
+   "js_src_files": "Charger depuis l’appareil",
+   "js_src_cloud": "Charger depuis le cloud",
+   "js_src_cam": "Appareil photo",
+   "js_src_mail": "Importer depuis un e-mail",
+   "js_srcs_files": "vos Fichiers",
+   "js_srcs_cloud": "votre Drive ou Dropbox",
+   "js_srcs_cam": "un scan",
+   "js_srcs_mail": "une pièce jointe",
+   "js_srcline": "La prochaine fois : %s · aujourd’hui, le document d’exemple",
+   "js_then_y": "Puis {yr} par an.",
+   "js_then_m": "Puis {mo} par mois.",
+   "js_plan_y": "{yr} par an, soit {yrmo} par mois",
+   "js_plan_m": "{mo} par mois",
+   "js_who_me": "Signez votre contrat, avec valeur légale",
+   "js_who_two": "Faites signer votre contrat par vous deux",
+   "js_who_many": "Faites signer chacun, dans le bon ordre",
+   "js_doc_b": "Document d’exemple",
+   "js_doc_c": "Contrat",
+   "js_ready_a": "%s · le client a signé",
+   "js_ready_b": "Document d’exemple · signé",
+   "js_ready_c": "Contrat · prêt à envoyer",
+   "js_st_wait": "En attente des autres",
+   "js_st_signed": "Signé",
+   "js_t_signed": "Signé. Enregistré avec la date.",
+   "js_t_closed": "Fermé directement dans l’app. Pas de second paywall.",
+   "js_t_trial": "Essai démarré (prototype : rien n’est facturé)."
+  },
+  "es": {
+   "yt_tag": "Anuncio · 0:23",
+   "yt_dl": "Descarga signNow en el App Store",
+   "yt_spon": "Patrocinado · SignNow: Firma electrónica",
+   "yt_inst": "Instalar",
+   "yt_txt": "“Ahorra tiempo y dinero. Cierra tratos con signNow.”",
+   "yt_meta": "“Firma documentos y reúne firmas en minutos. Y entérate de cada cambio.”",
+   "as_cancel": "Cancelar",
+   "as_name": "SignNow: Firma electrónica",
+   "as_sub": "Firma documentos y formularios PDF",
+   "as_get": "OBTENER",
+   "as_ad": "Anuncio",
+   "wel_h_a": "<span class=\"sn-hl\">Cierra tratos</span> con SignNow, estés donde estés",
+   "wel_h_b": "<span class=\"sn-hl\">Firma tu documento</span> en unos toques",
+   "wel_h_c": "<span class=\"sn-hl\">Tu acuerdo firmado</span>, con validez legal",
+   "proof_as": "<i>★</i> 4,5 <span>· 18 mil valoraciones en el App Store</span>",
+   "wel_a1": "Envía documentos a uno o varios destinatarios, por correo o enlace",
+   "wel_a2": "Recibe un aviso al instante cuando se abra o firme un documento",
+   "wel_a3": "Crea plantillas reutilizables para lo que envías a menudo",
+   "wel_b1": "Firma PDF, archivos Word y otros formatos en unos toques",
+   "wel_b2": "Rellena formularios, añade texto, casillas, fechas y sellos",
+   "wel_b3": "Funciona sin conexión: firma sin internet y sincroniza después",
+   "wel_c1": "Define el orden de firma y asigna roles",
+   "wel_c2": "Firmas electrónicas con validez legal, conformes a ESIGN, UETA y eIDAS",
+   "wel_c3": "Registros de auditoría con fecha y hora, direcciones IP y datos del firmante",
+   "wel_cta": "Empezar",
+   "have": "¿Ya tienes cuenta? <a>Iniciar sesión</a>",
+   "next": "Continuar",
+   "aska_h": "¿Qué envías a firmar?",
+   "aska_s": "Preparamos tu primera invitación. Luego podrás enviar lo que quieras.",
+   "aska_o1": "Contratos de venta y presupuestos",
+   "aska_o2": "Facturas y órdenes de compra",
+   "aska_o3": "Documentos de RR. HH. y altas",
+   "aska_o4": "Alquileres y documentos inmobiliarios",
+   "askb_h": "¿Dónde está el documento que debes firmar?",
+   "askb_s": "La próxima vez lo abriremos desde ahí. Primero, una firma en nuestro ejemplo.",
+   "askb_o1": "En mi móvil<small>Cargar desde el dispositivo</small>",
+   "askb_o2": "Google Drive, Dropbox, OneDrive<small>Cargar desde la nube</small>",
+   "askb_o3": "En papel: lo escaneo<small>Cámara</small>",
+   "askb_o4": "En un correo<small>Importar desde el correo</small>",
+   "askc_h": "¿Quién debe firmar este acuerdo?",
+   "askc_s": "Configuramos los firmantes y el orden por ti.",
+   "askc_o1": "Solo yo",
+   "askc_o2": "Yo y otra persona",
+   "askc_o3": "Varias personas, en orden",
+   "doa_title": "Invitar a firmar",
+   "doa_field": "Campo de firma · Firmante 1",
+   "doa_signer": "Firmante 1",
+   "doa_notify": "Avisarme cuando se firme",
+   "doa_st1": "<i>✓</i>Enviado a client@example.com<small>ahora</small>",
+   "doa_st2": "<i>✓</i>Abierto<small>un momento después</small>",
+   "doa_st3": "<i>✓</i>Firmado<small>listo</small>",
+   "noti_now": "ahora",
+   "noti_h": "¡Tu documento ha sido firmado!",
+   "noti_by": ", por client@example.com",
+   "doa_demo": "Una demo: el cliente y la firma son de ejemplo, no se ha enviado nada.",
+   "doa_send": "Enviar invitación",
+   "doc_sample": "Documento de ejemplo",
+   "done": "Listo",
+   "stamp": "Firmado",
+   "dob_h": "Contrato de servicios",
+   "dob_sig": "Firma",
+   "dob_tap": "Toca para firmar",
+   "dob_date": "Fecha",
+   "date_day": "16 nov 2026",
+   "dob_tools": "HERRAMIENTAS",
+   "dob_fields": "CAMPOS",
+   "tl_sig": "Firma",
+   "tl_ini": "Iniciales",
+   "tl_txt": "Texto",
+   "tl_date": "Fecha",
+   "tl_chk": "Casilla",
+   "sign_myself": "Firmar yo",
+   "dob_doneok": "Listo, ya está firmado",
+   "pad_clear": "Borrar",
+   "pad_h": "Dibuja tu firma",
+   "pad_hint": "Firma con el dedo. Si no dibujas nada, se usa una firma de ejemplo.",
+   "doc_title": "Acuerdo.pdf",
+   "doc_signers": "Firmantes",
+   "doc_order": "Orden de firma",
+   "doc_you": "Tú",
+   "doc_role": "Firmante",
+   "doc_p2": "La otra parte",
+   "doc_p2s": "Invitación por correo o enlace",
+   "doc_m2": "Segunda parte",
+   "doc_m2s": "Firma después de ti",
+   "doc_m3": "Tercera parte",
+   "doc_m3s": "Firma al final",
+   "leg_1": "Firmas electrónicas con validez legal, conformes a ESIGN, UETA y eIDAS",
+   "leg_2": "Registro de auditoría con fecha y hora, IP y datos del firmante",
+   "leg_3": "Cifrado de 256 bits, en tránsito y en reposo",
+   "doc_cta": "Preparar el acuerdo",
+   "pw_save": "Ahorra {save}",
+   "pw_year": "Anual",
+   "pw_month": "Mensual",
+   "pw_trial": "7 días gratis incluidos",
+   "pw_free7": "7 días gratis",
+   "pw_yrprice": "<b>{yr}</b> al año ({yrmo}/mes)",
+   "pw_moprice": "<b>{mo}</b> al mes",
+   "pw_sub": "Accede a todas las funciones. Puedes cancelar la prueba cuando quieras.",
+   "pw_what": "Lo que obtienes",
+   "f_inv": "Envío de invitaciones",
+   "f_inv_d": "Invita a quien quieras a firmar tu documento, sin complicaciones.",
+   "f_tpl": "Plantillas",
+   "f_tpl_d": "Ahorra tiempo con plantillas de documentos reutilizables.",
+   "f_up": "Subida ilimitada de documentos",
+   "f_up_d": "Sube un número ilimitado de documentos a la plataforma.",
+   "pw_cta": "Empezar mi prueba gratis de 7 días",
+   "proof_dl": "<i>★</i> 4,5 <span>· 18 mil valoraciones · 7 000 000+ descargas</span>",
+   "proof_us": "<i>★</i> 4,5 <span>· 18 mil valoraciones en el App Store de EE. UU.</span>",
+   "cancel_any": "Sin permanencia.",
+   "pwa_h": "Haz firmar cada <span data-bind=\"sendpl\"></span> desde tu móvil",
+   "pwb_chip": "✓ Documento de ejemplo · firmado",
+   "pwb_h": "Tu firma está lista. Ahora firma el documento real.",
+   "pwb_t1": "Hoy",
+   "pwb_t1s": "Business gratis 7 días: abre <span data-bind=\"srcshort\"></span>, firma, envía y sube lo que quieras.",
+   "pwb_t2": "Día 6",
+   "pwb_t2s": "Cancela en Ajustes al menos un día antes de que acabe la prueba y no pagas nada.",
+   "pwb_t3": "Día 7",
+   "pwb_t3s": "Empieza tu plan: <span data-bind=\"planline\"></span>.",
+   "pwb_nocharge": "Hoy no pagas nada.",
+   "laur_dl": "7 000 000+ descargas",
+   "laur_c": "Destacada en 100+ países",
+   "pwc_audit": "Auditoría",
+   "quote_by": "por Barbara Cerullo",
+   "pwc_year": "Business · Anual",
+   "pwc_month": "Business · Mensual",
+   "pwc_free": "7 días gratis.",
+   "su_h": "<span class=\"sn-hl\">Firma online segura</span>, estés donde estés",
+   "su_email": "Introduce tu correo",
+   "su_pass": "Introduce tu contraseña",
+   "su_cta": "Crear cuenta gratis",
+   "su_or": "o",
+   "su_apple": "Continuar con Apple",
+   "su_google": "Continuar con Google",
+   "su_terms": "Al usar SignNow aceptas los <a>Términos del servicio</a> y la <a>Política de privacidad</a>",
+   "hm_h": "Documentos",
+   "hm_search": "⌕ Buscar...",
+   "hm_none": "Sin plan activo",
+   "hm_start": "Iniciar prueba gratis",
+   "hm_trial": "Business · prueba gratis",
+   "hm_left": "Quedan 7 días",
+   "date_time": "16 nov 2026, 9:41",
+   "hm_card": "Firmar un documento",
+   "hm_card_s": "Rellena, firma y exporta un documento",
+   "hm_sm": "✍ Firmar yo",
+   "tab_1": "Documentos",
+   "tab_2": "Plantillas",
+   "tab_3": "Crear",
+   "tab_4": "Cuenta",
+   "tab_5": "Papelera",
+   "td_h": "Mejora tu plan",
+   "td_yr": "<b>{yr}</b> al año (<b>{yrmo}</b>/mes…",
+   "td_prem": "precio anual no mostrado aquí",
+   "td_ann": "Pagar al año",
+   "td_off": "−{save}",
+   "td_say": "Lo que dicen los clientes",
+   "td_note": "Reconstruido a partir de tu grabación, hecha en el App Store de Vietnam (2.499.000 VND al año por Business, “-58% OFF”). Precios del App Store de España. Cada instalación ve esta pantalla tras el registro y la verificación del correo, antes de cualquier documento.",
+   "js_sendpl_sales": "contrato de venta",
+   "js_sendpl_po": "orden de compra",
+   "js_sendpl_hr": "carta de oferta",
+   "js_sendpl_lease": "contrato de alquiler",
+   "js_sendpl_doc": "documento",
+   "js_src_files": "Cargar desde el dispositivo",
+   "js_src_cloud": "Cargar desde la nube",
+   "js_src_cam": "Cámara",
+   "js_src_mail": "Importar desde el correo",
+   "js_srcs_files": "tus Archivos",
+   "js_srcs_cloud": "tu Drive o Dropbox",
+   "js_srcs_cam": "un escaneo",
+   "js_srcs_mail": "un adjunto",
+   "js_srcline": "La próxima vez: %s · hoy, el documento de ejemplo",
+   "js_then_y": "Luego {yr} al año.",
+   "js_then_m": "Luego {mo} al mes.",
+   "js_plan_y": "{yr} al año, {yrmo} al mes",
+   "js_plan_m": "{mo} al mes",
+   "js_who_me": "Firma tu acuerdo, con validez legal",
+   "js_who_two": "Consigue la firma de ambos en tu acuerdo",
+   "js_who_many": "Consigue la firma de todos, en orden",
+   "js_doc_b": "Documento de ejemplo",
+   "js_doc_c": "Acuerdo",
+   "js_ready_a": "%s · el cliente ya firmó",
+   "js_ready_b": "Documento de ejemplo · firmado",
+   "js_ready_c": "Acuerdo · listo para enviar",
+   "js_st_wait": "Esperando a otros",
+   "js_st_signed": "Firmado",
+   "js_t_signed": "Firmado. Guardado con la fecha.",
+   "js_t_closed": "Cerrado directo a la app. Sin segundo paywall.",
+   "js_t_trial": "Prueba iniciada (prototipo: no se cobra nada)."
+  }
+ },
+ "prices": {
+  "fr": {
+   "yr": "106,99 €",
+   "mo": "22,99 €",
+   "yrmo": "8,92 €",
+   "save": "61 %"
+  },
+  "es": {
+   "yr": "106,99 €",
+   "mo": "22,99 €",
+   "yrmo": "8,92 €",
+   "save": "61 %"
+  }
+ },
+ "labelsI18n": {
+  "fr": {
+   "send": {
+    "sales": "Contrat de vente",
+    "po": "Bon de commande",
+    "hr": "Promesse d’embauche",
+    "lease": "Contrat de bail"
+   }
+  },
+  "es": {
+   "send": {
+    "sales": "Contrato de venta",
+    "po": "Orden de compra",
+    "hr": "Carta de oferta",
+    "lease": "Contrato de alquiler"
+   }
+  }
+ },
  "liveUrl": "https://eddieatadapty.github.io/signnow-flow-rebuild/",
  "video": "",
  "poster": "",
@@ -1756,7 +2194,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
   "proposed": "paywall-a",
   "kicker": "The paywall, side by side",
   "title": "Your paywall today, and with the five ideas.",
-  "sub": "Same plans, same prices. Version A; versions B and C change the layout again.",
+  "sub": "Same plans, same prices. The other two flows change the layout again.",
   "todayCap": "rebuilt from your recording, in US prices",
   "rows": [
    {
@@ -1775,7 +2213,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
     "h": "Plans",
     "idea": 4,
     "was": "Business and Premium yearly; monthly only behind “Pay annually -60% OFF”",
-    "now": "$95.99 a year ($7.99/month) “Save 60%” next to $19.99 a month"
+    "now": "$95.99 a year ($8.00 a month) “Save 60%” next to $19.99 a month"
    },
    {
     "h": "Proof",
@@ -1800,7 +2238,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
    "items": [
     {
      "dt": "$95.99 a year, 7-day free trial",
-     "dd": "“SignNow Business, free trial” in the In-App Purchases on the <a href=\"https://apps.apple.com/us/app/signnow-e-signature-app/id489262811\">US App Store listing</a>, read 16 Nov 2026. Apple’s purchase sheet in your recording names the same SKU (“1-week free trial”). $7.99 a month = $95.99 ÷ 12."
+     "dd": "“SignNow Business, free trial” in the In-App Purchases on the <a href=\"https://apps.apple.com/us/app/signnow-e-signature-app/id489262811\">US App Store listing</a>, read 16 Nov 2026. Apple’s purchase sheet in your recording names the same SKU (“1-week free trial”). $8.00 a month = $95.99 ÷ 12."
     },
     {
      "dt": "$19.99 a month",
@@ -1866,11 +2304,11 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
     },
     {
      "dt": "Apple Ads searches",
-     "dd": "US Apple Ads search data for your account, 16 Oct–16 Nov 2026, account-level (it may include SignNow Private Cloud): “sign docs” about 59% share of voice (popularity 5.41), “agreement” 63% (15.34), “sign” 51% (21.15), your name “signnow” 97%. Opening a version per search is our proposal."
+     "dd": "US Apple Ads search data for your account, 16 Oct–16 Nov 2026, account-level (it may include SignNow Private Cloud): “sign docs” about 59% share of voice (popularity 5.41), “agreement” 63% (15.34), “sign” 51% (21.15), your name “signnow” 97%. Opening a flow per search is our proposal."
     },
     {
      "dt": "Ours",
-     "dd": "The questions and their answers, the client in version A (client@example.com), the sample signature, the signers in version C (alex@example.com), the welcome headlines, the trial timeline wording and the toasts."
+     "dd": "The questions and their answers, the sample client in the YouTube flow (client@example.com), the sample signature, the signers in the “agreement” flow (alex@example.com), the welcome headlines, the trial timeline wording and the toasts."
     }
    ]
   },
@@ -1914,11 +2352,34 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
 
 <script>
 /* per-app hooks: SignNow. Derived text from the answers, the YouTube/App Store ad switch, the invite that comes back
-   signed (A), the signature pad on the Sample Document (B), toasts. */
+   signed (A), the signature pad on the Sample Document (B), toasts.
+   Languages: the English below is the base; tr('js_…') reads C.i18n[S.lang] (FR/ES live in parts/i18n.json),
+   {yr} {mo} {yrmo} {save} come from C.prices[S.lang], %s is a value filled in here. */
 (function(){
-  var SEND_PL = {sales: 'sales contract', po: 'purchase order', hr: 'offer letter', lease: 'lease'};
-  var SRC = {files: ['Load from Device', 'your Files'], cloud: ['Load from Cloud', 'your Drive or Dropbox'], cam: ['Camera', 'a scan'], mail: ['Import from email', 'an email attachment']};
-  var WHO = {me: 'Sign your agreement, legally binding', two: 'Get your agreement signed by both of you', many: 'Get everyone to sign, in the right order'};
+  var EN = {
+    js_sendpl_sales: 'sales contract', js_sendpl_po: 'purchase order', js_sendpl_hr: 'offer letter', js_sendpl_lease: 'lease', js_sendpl_doc: 'document',
+    js_src_files: 'Load from Device', js_src_cloud: 'Load from Cloud', js_src_cam: 'Camera', js_src_mail: 'Import from email',
+    js_srcs_files: 'your Files', js_srcs_cloud: 'your Drive or Dropbox', js_srcs_cam: 'a scan', js_srcs_mail: 'an email attachment',
+    js_srcline: 'Next time: %s · today, the Sample Document',
+    js_then_y: 'Then {yr} a year.', js_then_m: 'Then {mo} a month.',
+    js_plan_y: '{yr} a year, {yrmo} a month', js_plan_m: '{mo} a month',
+    js_who_me: 'Sign your agreement, legally binding', js_who_two: 'Get your agreement signed by both of you', js_who_many: 'Get everyone to sign, in the right order',
+    js_doc_b: 'Sample Document', js_doc_c: 'Agreement',
+    js_ready_a: '%s · signed by your client', js_ready_b: 'Sample Document · signed', js_ready_c: 'Agreement · ready to send',
+    js_st_wait: 'Waiting for Others', js_st_signed: 'Signed',
+    js_t_signed: 'Signed. Saved with the date.', js_t_closed: 'Closed straight into the app. No second paywall.', js_t_trial: 'Trial started (a prototype: nothing is charged).'
+  };
+  /* US App Store: SignNow Business, free trial $95.99 a year ($95.99 / 12 = $8.00) · signNow Business Monthly $19.99 */
+  var USD = {yr: '$95.99', mo: '$19.99', yrmo: '$8.00', save: '60%'};
+  function tr(k, v){
+    var l = (window.S && S.lang) || 'en', C0 = window.C || {};
+    var d = (C0.i18n || {})[l] || {}, P = (C0.prices || {})[l] || USD;
+    var s = d[k] != null ? d[k] : EN[k];
+    if (s == null) return '';
+    s = s.replace(/\{(\w+)\}/g, function(m, x){ return x in P ? P[x] : (x in USD ? USD[x] : m); });
+    return v == null ? s : s.replace('%s', v);
+  }
+  var SRCK = {files: 1, cloud: 1, cam: 1, mail: 1}, WHOK = {me: 1, two: 1, many: 1}, SENDK = {sales: 1, po: 1, hr: 1, lease: 1};
   var DEFSIG = '<svg viewBox="0 0 140 50" aria-hidden="true"><path d="M6 38c8-20 14-30 18-30s-6 30 0 30 10-22 14-22-2 18 3 18 6-12 10-12 0 12 6 12 8-14 14-14-2 14 6 14 10-8 18-10 14 2 24-4"/></svg>';
   var sigHTML = '';
   function setB(k, v){ document.querySelectorAll('[data-bind="' + k + '"]').forEach(function(el){ el.textContent = v; }); }
@@ -1926,17 +2387,17 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
     if (window.HERO && !S._h) { S._h = 1; S.signed = '1'; S.sent = '1'; }
     document.querySelectorAll('[data-ads]').forEach(function(el){ el.classList.toggle('sn-vis', el.dataset.ads.split(' ').indexOf(String(S.ad)) > -1); });
     var yr = S.plan !== 'month';
-    setB('sendpl', (SEND_PL[S.send] || 'document'));
-    var src = SRC[S.src] || SRC.files;
-    setB('srcline', 'Next time: ' + src[0] + ' · today, the Sample Document');
-    setB('srcshort', src[1]);
-    setB('then', yr ? 'Then $95.99 a year.' : 'Then $19.99 a month.');
-    setB('planline', yr ? '$95.99 a year, $7.99 a month' : '$19.99 a month');
-    setB('whohead', WHO[S.who] || WHO.two);
-    var doc = S.ad === 'a' ? lab('send') : S.ad === 'b' ? 'Sample Document' : 'Agreement';
-    setB('docready', S.ad === 'a' ? doc + ' · signed by your client' : S.ad === 'b' ? 'Sample Document · signed' : 'Agreement · ready to send');
+    setB('sendpl', tr('js_sendpl_' + (SENDK[S.send] ? S.send : 'doc')));
+    var src = SRCK[S.src] ? S.src : 'files';
+    setB('srcline', tr('js_srcline', tr('js_src_' + src)));
+    setB('srcshort', tr('js_srcs_' + src));
+    setB('then', tr(yr ? 'js_then_y' : 'js_then_m'));
+    setB('planline', tr(yr ? 'js_plan_y' : 'js_plan_m'));
+    setB('whohead', tr('js_who_' + (WHOK[S.who] ? S.who : 'two')));
+    var doc = S.ad === 'a' ? lab('send') : S.ad === 'b' ? tr('js_doc_b') : tr('js_doc_c');
+    setB('docready', S.ad === 'a' ? tr('js_ready_a', doc) : S.ad === 'b' ? tr('js_ready_b') : tr('js_ready_c'));
     setB('homedoc', doc);
-    setB('homest', S.ad === 'c' ? 'Waiting for Others' : 'Signed');
+    setB('homest', tr(S.ad === 'c' ? 'js_st_wait' : 'js_st_signed'));
     document.querySelectorAll('[data-bind="homest"]').forEach(function(el){ el.classList.toggle('sn-wait', S.ad === 'c'); });
     document.querySelectorAll('.sn-sig').forEach(function(el){ el.classList.toggle('done', S.signed === '1'); });
     document.querySelectorAll('.sn-sigout').forEach(function(el){ if (S.signed === '1' && el.dataset.v !== (sigHTML || 'd')) { el.innerHTML = sigHTML || DEFSIG; el.dataset.v = sigHTML || 'd'; } });
@@ -1979,10 +2440,10 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8cc2ea;--jn-acc:#076dbd;--jn-acc2:#0077d1;--j
     if (e.target.closest('[data-padclear]')) { clearPad(); return; }
     if (e.target.closest('[data-padok]')) {
       sigHTML = drawn ? '<img src="' + cv.toDataURL() + '" alt="">' : '';
-      pad.classList.remove('on'); S.signed = '1'; sync(); toast('Signed. Saved with the date.'); return;
+      pad.classList.remove('on'); S.signed = '1'; sync(); toast(tr('js_t_signed')); return;
     }
-    if (e.target.closest('[data-closepw]')) setTimeout(function(){ toast('Closed straight into the app. No second paywall.'); }, 350);
-    if (e.target.closest('[data-pick="paid:1"]')) setTimeout(function(){ toast('Trial started (a prototype: nothing is charged).'); }, 350);
+    if (e.target.closest('[data-closepw]')) setTimeout(function(){ toast(tr('js_t_closed')); }, 350);
+    if (e.target.closest('[data-pick="paid:1"]')) setTimeout(function(){ toast(tr('js_t_trial')); }, 350);
   });
   var tt = document.createElement('div'); tt.className = 'sn-toast'; var pin = document.querySelector('.phone-in'); if (pin) pin.appendChild(tt);
   var old = document.getElementById('snToast'); if (old) old.remove();
@@ -2298,7 +2759,7 @@ function tourInit(){
       cap.innerHTML = r ? '<span class="au-duo-k">' + label(id) + '</span>' + r[f.k]
                         : '<span class="au-duo-k">' + label(id) + '</span>' + (shared || 'Same screen for every ad.');
     });
-    var sc = document.getElementById('duoStepCap'); if (sc) sc.innerHTML = shared && id === 'today' ? shared : '';
+    var sc = document.getElementById('duoStepCap'); if (sc) sc.innerHTML = (D.stepLine && D.stepLine[id]) || (shared && id === 'today' ? shared : '');
   }
   function both(id, n, only){
     var st = STEPS.find(function(s){ return s.id === id; }) || stepFor(id);
@@ -2409,6 +2870,15 @@ function tourInit(){
   var app = C.app || J.app || '', demo = J.demo || 'https://adapty.io/schedule-demo/';
   var icon = J.icon || (M.hero && M.hero.icon) || '';
   var root = document.createElement('div'); root.className = 'jn-root';
+  /* channel colours, as the Atlas "Ad to Pro" pages use them: one hue per channel, a darker / lighter shade when two
+     phones come from the same channel. J.channels = {a:'#hex'} overrides. */
+  var CH = {youtube: '#FF0033', apple: '#7346E0', meta: '#0866FF', tiktok: '#FE2C55', google: '#1A73E8', web: '#3D3C3A'};
+  function chanKey(s){ s = String(s || '').toLowerCase(); return /youtube/.test(s) ? 'youtube' : /apple|search|asa|app store/.test(s) ? 'apple' : /tiktok/.test(s) ? 'tiktok' : /google|admob/.test(s) ? 'google' : /web|site/.test(s) && !/meta|facebook|instagram/.test(s) ? 'web' : 'meta'; }
+  function shade(hex, n){ if (!n) return hex; var c = hex.replace('#', '').match(/../g).map(function(x){ return parseInt(x, 16); }), t = n === 1 ? 0 : 255, k = n === 1 ? .3 : .32;
+    return '#' + c.map(function(v){ return ('0' + Math.round(v + (t - v) * k).toString(16)).slice(-2); }).join(''); }
+  var COL = {}, seen = {};
+  (D.flows || []).forEach(function(f){ var ck = chanKey(f.chan); seen[ck] = seen[ck] === undefined ? 0 : seen[ck] + 1; COL[f.k] = (J.channels && J.channels[f.k]) || shade(CH[ck], seen[ck]); });
+  function colFor(a){ if (a.c) return a.c; if (a.flow && COL[a.flow]) return COL[a.flow]; return CH[chanKey(a.chan || a.kind)]; }
 
   /* nav: their mark, "Growth audit · by Adapty", the two views, Book a demo */
   var L = J.logo || {}, logo;
@@ -2444,8 +2914,7 @@ function tourInit(){
   /* 4 your ads: one tab per promise, the ad itself playing, its frames, then what it promises and where it lands */
   var A = J.ads || {tabs: []};
   var ads = '<section class="jn-sec" id="jnAds"><div class="jn-wrap"><p class="jn-kick">' + (A.kick || 'Your ads') + '</p><h2 class="jn-h2">' + halves(A.h2, 'b') + '</h2>' +
-    '<p class="jn-p">' + (A.p || '') + '</p><div class="jn-adtabs" id="jnAdTabs"></div><div class="jn-lib"><div class="jn-media" id="jnMedia"><div class="jn-vid" id="jnAdMedia"></div><div class="jn-strip" id="jnAdStrip"></div></div>' +
-    '<div class="jn-adb" id="jnAdB"></div></div>' + (A.more ? '<p class="jn-more">' + A.more + '</p>' : '') +
+    '<p class="jn-p">' + (A.p || '') + '</p><div class="jn-adlist" id="jnAdList"></div>' + (A.more ? '<p class="jn-more">' + A.more + '</p>' : '') +
     '<p class="jn-foot-l">' + (A.foot || 'Adapty can pick the first screen of the flow from the campaign the install came from, through the attribution you already run. A new promise gets its own first screen the same day, with no app release.') + '</p></div></section>';
 
   /* 5 the five ideas */
@@ -2459,9 +2928,10 @@ function tourInit(){
   /* 6 potential outcome: a dark card in their world + three do-cards (Day 1 / Week 1 / Week 2 from the ads config) */
   var O = J.outcome || {}, co = C.outcome || {};
   var nums = O.nums || [co.cr && [co.cr, O.crl || 'CR to purchase'], co.arpu && [co.arpu, O.arpul || 'ARPU']].filter(Boolean);
+  var oimg = O.img === false ? '' : (O.img || (C.hero && C.hero[1] ? 'assets/hero/' + C.hero[1] + '.png' : ''));
   var dos = O.do || $$('#duo .au-duo-next > div').map(function(x){ return [$('b', x).innerHTML, $('h4', x).innerHTML, $('p', x).innerHTML]; });
   var outc = '<section class="jn-sec"><div class="jn-wrap"><p class="jn-kick">Potential outcome</p><h2 class="jn-h2">' + halves(O.h2 || ['Five ideas,', 'three versions of one app.'], 'b') + '</h2>' +
-    '<div class="jn-outc"><div class="jn-osh"><div class="jn-og" aria-hidden="true">' + (O.tiles || words.slice(0, 9)).slice(0, 9).map(function(t, k){ return '<i style="--c:' + TC[k % TC.length] + '">' + t + '</i>'; }).join('') + '</div><div class="k">' + (O.k || 'Run together') + '</div><h3>' + (O.t || '') + '</h3>' +
+    '<div class="jn-outc"><div class="jn-osh' + (oimg ? ' jn-world' : '') + '">' + (oimg ? '<img class="jn-oimg" src="' + oimg + '" alt="">' : '<div class="jn-og" aria-hidden="true">' + (O.tiles || words.slice(0, 9)).slice(0, 9).map(function(t, k){ return '<i style="--c:' + TC[k % TC.length] + '">' + t + '</i>'; }).join('') + '</div>') + '<div class="k">' + (O.k || 'Run together') + '</div><h3>' + (O.t || '') + '</h3>' +
     '<div class="jn-nums">' + nums.map(function(n){ return '<div><b>' + n[0] + '</b><span>' + n[1] + '</span></div>'; }).join('') + '</div>' +
     '<p class="cap">' + (O.cap || 'Our estimate if the five run together. They overlap, so they don’t add up; each one is its own A/B test against today’s flow.') + '</p></div>' +
     '<div class="jn-do">' + dos.map(function(x){ return '<div><small>' + x[0] + '</small><h4>' + x[1] + '</h4><p>' + x[2] + '</p></div>'; }).join('') + '</div></div>' +
@@ -2478,7 +2948,7 @@ function tourInit(){
   var langs = (C.langs || []).length > 1 ? '<div class="jn-seg" id="jnLang" role="group" aria-label="Language">' + C.langs.map(function(l){ return '<button type="button" data-l="' + l.code + '">' + l.name + '</button>'; }).join('') + '</div>' : '';
   var proto = '<main class="jn-view" id="jnProto"><section class="jn-ph"><div class="jn-wrap"><p class="jn-kick">' + (P.kick || 'Prototype · one first launch per ad') + '</p>' +
     '<h1 class="jn-h1p">' + halves(P.h1 || ['Three ads.', 'Three first launches.'], 'b') + '</h1><p class="jn-p">' + (P.sub || '') + '</p>' +
-    (langs ? '<div class="jn-tool">' + langs + '</div>' : '') + '</div><div id="jnDuoSlot"></div>' +
+    (langs ? '<div class="jn-tool">' + langs + '</div><p class="jn-langnote" id="jnLangNote"></p>' : '') + '</div><div id="jnDuoSlot"></div>' +
     '<div class="jn-wrap"><div class="jn-qr"><div class="jn-qg" aria-hidden="true">' + tiles(48, false) + '</div><img src="assets/qr-app.png" alt="QR code that opens the prototype on a phone"><div class="t"><h4>' + (qr.t || 'Try it on your phone') + '</h4><p>' + (qr.p || 'Scan to open the prototype full screen, the way a new user would see it. Every screen here can be built in Adapty Flow Builder and tested against today’s.') + '</p></div>' +
     '<a class="jn-pill g jn-full" href="?app">Open it full screen</a><a class="jn-pill w" href="' + demo + '" target="_blank" rel="noopener">Book a demo</a></div>' +
     '<p class="jn-protofoot">' + (C.grounding || '') + '</p></div></section></main>';
@@ -2495,7 +2965,11 @@ function tourInit(){
     cards.innerHTML = I.map(function(d, i){ return '<button type="button" class="jn-icard" data-duoidea="' + (i + 1) + '" data-scr="' + d.screen + '"><small>Idea ' + (i + 1) + ' of ' + I.length + '</small><h4>' + d.title + '</h4><p>' + d.what + '</p>' +
       '<div class="jn-rowf">' + chip(d) + '<span class="jn-see">See it on the phones →</span></div>' + (kept[i] ? '<div class="kept">' + kept[i] + '</div>' : '') + '</button>'; }).join('');
     duo.appendChild(cards);
-    (D.flows || []).forEach(function(f){ var p = $('#duo .au-duo-' + f.k + ' .au-duo-pill'); if (p && /apple|search/i.test(f.chan || '')) p.classList.add('asa'); });
+    (D.flows || []).forEach(function(f){ $$('#duo .au-duo-' + f.k).forEach(function(x){ x.style.setProperty('--au-ring', COL[f.k]); }); });
+    /* number the steps the way Atlas does ("1 · The ad"), once trio.js has drawn them */
+    var stp = $('#duoSteps');
+    function numberSteps(){ var n = 0; $$('#duoSteps button[data-id]').forEach(function(b){ if (b.classList.contains('au-today')) return; n++; if (!b.querySelector('.jn-n')) b.insertAdjacentHTML('afterbegin', '<span class="jn-n">' + n + ' · </span>'); }); }
+    if (stp) { numberSteps(); new MutationObserver(numberSteps).observe(stp, {childList: true}); }
   }
 
   /* views */
@@ -2521,7 +2995,6 @@ function tourInit(){
     var o = e.target.closest('[data-open]'); if (o) { show(o.dataset.open); return; }
     var r = e.target.closest('[data-jnidea]'); if (r) { var n = r.dataset.jnidea; show('proto'); ready(function(){ var c = $('.jn-icard[data-duoidea="' + n + '"]'); if (c) c.click(); }); return; }
     var g = e.target.closest('[data-jngo]'); if (g) { var k = g.dataset.jngo; show('proto'); ready(function(){ var b = document.createElement('button'); b.hidden = true; b.dataset.duogo = k; duo.appendChild(b); b.click(); b.remove(); setTimeout(stage, 450); }); return; }
-    var a = e.target.closest('[data-jnad]'); if (a) { drawAd(+a.dataset.jnad); return; }
     var l = e.target.closest('#jnLang [data-l]'); if (l && window.setLang) { setLang(l.dataset.l); paintLang(); }
   });
   /* idea cards scroll the phones into view */
@@ -2531,51 +3004,55 @@ function tourInit(){
     if (!e.target.closest('[data-jnwalk]')) return;
     show('proto'); ready(function(){ var b = $('#walkBtn'); if (b && !b.classList.contains('on')) b.click(); });
   });
-  function paintLang(){ var cur = (window.S && S.lang) || (C.langs && C.langs[0].code); $$('#jnLang [data-l]').forEach(function(b){ b.classList.toggle('on', b.dataset.l === cur); }); }
+  function paintLang(){ var cur = (window.S && S.lang) || (C.langs && C.langs[0].code); $$('#jnLang [data-l]').forEach(function(b){ b.classList.toggle('on', b.dataset.l === cur); });
+    var ln = $('#jnLangNote'); if (ln) { var t = (J.langNote || {})[cur] || ''; ln.innerHTML = t; ln.style.display = t ? '' : 'none'; } }
   paintLang();
 
-  /* the ads card */
-  var tok = 0;
-  function drawAd(i){
-    var T = A.tabs || []; if (!T.length) return; var a = T[i] || T[0], my = ++tok;
-    $('#jnAdTabs').innerHTML = T.map(function(x, k){ return '<button type="button" data-jnad="' + k + '"' + (k === i ? ' class="on"' : '') + '>' + x.tab + (x.n ? ' · ' + x.n + ' ' + (x.unit || (x.n > 1 ? 'ads' : 'ad')) : '') + '</button>'; }).join('');
-    var kind = a.kind || 'video', tag = '<span class="jn-tag' + (kind === 'search' ? ' asa' : kind === 'image' ? ' img' : '') + '">' + (a.chan || 'Meta · running now') + '</span>', m;
-    if (kind === 'video') m = tag + '<video src="' + a.src + '" poster="' + (a.poster || '') + '"' + (a.fit ? ' class="jn-fit"' : '') + ' autoplay muted loop playsinline></video>';
-    else if (kind === 'image') m = tag + '<img src="' + a.src + '" alt="The ad"' + (a.fit ? ' class="jn-fit"' : '') + '>';
-    else if (kind === 'post') m = tag + '<div class="jn-post"><div class="jn-post-h"><img src="' + icon + '" alt=""><div><b>' + (a.page || app) + '</b><small>Sponsored · ◍</small></div><span>···</span></div>' +
+  /* the ads: one card per ad, each playing (video), animating (search) or showing as the feed does (post) */
+  function adMedia(a){
+    var kind = a.kind || 'video', tag = '<span class="jn-tag">' + (a.chan || 'Meta · running now') + '</span>';
+    if (kind === 'video') return tag + '<video src="' + a.src + '" poster="' + (a.poster || '') + '"' + (a.fit ? ' class="jn-fit"' : '') + ' autoplay muted loop playsinline></video>';
+    if (kind === 'image') return tag + '<img src="' + a.src + '" alt="The ad"' + (a.fit ? ' class="jn-fit"' : '') + '>';
+    if (kind === 'post') return tag + '<div class="jn-post"><div class="jn-post-h"><img src="' + icon + '" alt=""><div><b>' + (a.page || app) + '</b><small>Sponsored · ◍</small></div><span>···</span></div>' +
       '<p class="jn-post-t">' + (a.text || '') + '</p><div class="jn-post-m"><img src="' + a.src + '" alt="The ad"></div>' +
       '<div class="jn-post-l"><div><small>' + (a.domain || '') + '</small><b>' + (a.headline || '') + '</b></div><span>' + (a.cta || 'Learn more') + '</span></div></div>';
-    else { var S2 = J.asa || {};
-      m = tag + '<div class="jn-asa"><div class="jn-asa-bar"><span class="jn-asa-q"></span></div><div class="jn-asa-ad"><img src="' + (S2.icon || icon) + '" alt=""><div><b>' + (S2.name || app) + '</b><small>' + (S2.sub || '') + '</small><em>Ad</em></div><span>Get</span></div>' +
-        '<div class="jn-asa-shots">' + (S2.shots || []).slice(0, 3).map(function(s){ return '<img src="' + s + '" alt="">'; }).join('') + '</div></div>'; }
-    var box = $('#jnAdMedia'), media = $('#jnMedia');
-    box.innerHTML = m; box.classList.toggle('asa', kind === 'search'); media.style.removeProperty('--ar');
-    function fitAr(w, h){ if (w && h && my === tok) media.style.setProperty('--ar', w + '/' + h); }
-    var v = $('#jnAdMedia video');
-    if (v) { v.muted = true; v.addEventListener('loadedmetadata', function(){ fitAr(v.videoWidth, v.videoHeight); }); if (v.readyState >= 1) fitAr(v.videoWidth, v.videoHeight); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
-    var im = kind === 'image' && $('#jnAdMedia > img');
-    if (im && !a.fit) { im.onload = function(){ fitAr(im.naturalWidth, im.naturalHeight); }; if (im.complete) fitAr(im.naturalWidth, im.naturalHeight); }
-    $('#jnAdStrip').innerHTML = (a.frames || []).slice(0, 4).map(function(s){ return '<img src="' + s + '" alt="">'; }).join('');
-    $('#jnAdStrip').style.display = (a.frames || []).length ? '' : 'none';
-    $('#jnAdB').innerHTML = '<div class="hook">' + a.hook + '</div>' + (a.en ? '<div class="en">' + a.en + '</div>' : '') + '<div class="meta">' + (a.meta || '') + '</div>' +
-      '<dl><dt>In the ad</dt><dd>' + (a.inad || '') + '</dd><dt>The promise</dt><dd>' + (a.promise || '') + '</dd><dt>Today it lands on</dt><dd>' + (a.today || '') + '</dd>' +
-      (a.rebuild ? '<dt>In the rebuild</dt><dd>' + a.rebuild + '</dd>' : '') + '</dl>' +
-      '<div class="go">' + (a.flow ? '<button type="button" class="jn-pill k" data-jngo="' + a.flow + '">Open its flow</button>' : '<span class="jn-foot-l">' + (a.uses || '') + '</span>') + '</div>';
-    if (kind === 'search') typeTerm(a.term || a.tab.replace(/[“”"]/g, ''), my);
+    var S2 = J.asa || {};
+    return tag + '<div class="jn-asa"><div class="jn-asa-bar"><span class="jn-asa-q"></span></div><div class="jn-asa-ad"><img src="' + (S2.icon || icon) + '" alt=""><div><b>' + (S2.name || app) + '</b><small>' + (S2.sub || '') + '</small><em>Ad</em></div><span>Get</span></div>' +
+      '<div class="jn-asa-shots">' + (S2.shots || []).slice(0, 3).map(function(x){ return '<img src="' + x + '" alt="">'; }).join('') + '</div></div>';
   }
-  function typeTerm(term, my){
-    var q = $('#jnAdMedia .jn-asa-q'), box = $('#jnAdMedia .jn-asa'); if (!q) return;
-    var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (RM) { q.textContent = term; box.classList.add('show'); return; }
+  function drawAds(){
+    var T = A.tabs || [], list = $('#jnAdList'); if (!T.length || !list) return;
+    list.innerHTML = T.map(function(a, i){
+      var kind = a.kind || 'video', tall = kind === 'search' || kind === 'post' || a.tall;
+      return '<article class="jn-card' + (tall ? ' tall' : '') + '" data-card="' + i + '" style="--c:' + colFor(a) + '"><div class="jn-media"><div class="jn-vid' + (kind === 'search' ? ' asa' : '') + '">' + adMedia(a) + '</div>' +
+        ((a.frames || []).length ? '<div class="jn-strip">' + a.frames.slice(0, 4).map(function(x){ return '<img src="' + x + '" alt="">'; }).join('') + '</div>' : '') + '</div>' +
+        '<div class="jn-adb"><div class="hook">' + a.hook + (a.sub ? ' <small>' + a.sub + '</small>' : '') + '</div>' + (a.en ? '<div class="en">' + a.en + '</div>' : '') + '<div class="meta">' + (a.meta || '') + '</div>' +
+        '<dl><dt>' + (kind === 'search' ? 'In the search' : 'In the ad') + '</dt><dd>' + (a.inad || '') + '</dd><dt>The promise</dt><dd>' + (a.promise || '') + '</dd><dt>Today it lands on</dt><dd>' + (a.today || '') + '</dd>' +
+        (a.rebuild ? '<dt>In the rebuild</dt><dd>' + a.rebuild + '</dd>' : '') + '</dl>' +
+        '<div class="go">' + (a.flow ? '<button type="button" class="jn-pill k" data-jngo="' + a.flow + '">Open its flow</button>' : '<span class="jn-foot-l">' + (a.uses || '') + '</span>') + '</div></div></article>';
+    }).join('');
+    T.forEach(function(a, i){
+      var card = $('.jn-card[data-card="' + i + '"]', list), media = $('.jn-media', card);
+      function fitAr(w, h){ if (!w || !h) return; media.style.setProperty('--ar', w + '/' + h); card.classList.toggle('tall', h > w * 1.05 || a.kind === 'search' || a.kind === 'post' || !!a.tall); }
+      var v = $('video', card);
+      if (v) { v.muted = true; v.addEventListener('loadedmetadata', function(){ fitAr(v.videoWidth, v.videoHeight); }); if (v.readyState >= 1) fitAr(v.videoWidth, v.videoHeight); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      var im = a.kind === 'image' && $('.jn-vid > img', card);
+      if (im && !a.fit) { im.onload = function(){ fitAr(im.naturalWidth, im.naturalHeight); }; if (im.complete) fitAr(im.naturalWidth, im.naturalHeight); }
+      if (a.kind === 'search') typeTerm(card, a.term || String(a.tab || '').replace(/[“”"]/g, ''), i * 1400);
+    });
+  }
+  function typeTerm(card, term, delay){
+    var q = $('.jn-asa-q', card), box = $('.jn-asa', card); if (!q) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { q.textContent = term; box.classList.add('show'); return; }
     var i = 0;
-    (function f(){
-      if (my !== tok) return;
+    function f(){
       if (i <= term.length) { q.textContent = term.slice(0, i++); setTimeout(f, 95); return; }
-      setTimeout(function(){ if (my !== tok) return; box.classList.add('show');
-        setTimeout(function(){ if (my !== tok) return; box.classList.remove('show'); i = 0; q.textContent = ''; setTimeout(f, 600); }, 4200); }, 350);
-    })();
+      setTimeout(function(){ box.classList.add('show');
+        setTimeout(function(){ box.classList.remove('show'); i = 0; q.textContent = ''; setTimeout(f, 600); }, 4200); }, 350);
+    }
+    setTimeout(f, delay || 0);
   }
-  drawAd(0);
+  drawAds();
   if (/[?&]view=proto\b/.test(Q) || /[?&]step=\w/.test(Q)) show('proto');
 })();
 /* JUNO:END */
@@ -2671,7 +3148,7 @@ function tourInit(){
       for (var k = 0; k < n; k++) {
         var s = steps[k], btn = $('#duoSteps button[data-id="' + s.id + '"]'); if (btn) btn.click();
         cap((W.captions || {})[s.id] || ('<b>' + (btn ? btn.textContent : s.id) + '.</b> ' + (rows[s.id] ? 'Each ad gets its own version of this screen.' : (plain((D.stepCaps || {})[s.id]) || 'Same screen for every ad.'))), Math.round((k + 1) / (n + 1) * 100));
-        await wait(k ? 1500 : 2200, tk);
+        await wait(k ? (W.dwell || 1500) : (W.first || 2200), tk);
         if (k === n - 1) break;
         /* each phone taps through its own screen: an answer first if nothing is picked, then its button */
         for (var pass = 0; pass < 2; pass++) {
@@ -2682,7 +3159,7 @@ function tourInit(){
         }
         $$('.au-finger').forEach(function(f){ f.classList.toggle('on', false); });
       }
-      cap(W.end || 'That’s the three versions. Tap any phone, or a recommendation under it.', 100); await wait(2600, tk);
+      cap(W.end || 'That’s the three versions. Tap any phone, or a recommendation under it.', 100); await wait(W.endMs || 2600, tk);
     } catch (e) {}
     stop();
   }
@@ -2693,7 +3170,7 @@ function tourInit(){
 })();
 /* MOTION:END */
 </script>
-<script type="application/json" id="motionData">{"hero": {"words": ["Close deals", "sign docs", "agreement", "Sign Myself", "Invite to Sign", "stay in the loop", "Signed", "Templates", "Sample Document"], "icon": "assets/brand/appstore-icon.jpg", "stats": [["★ 4.5", "from 18K ratings on the US App Store"], ["30", "US Apple Ads search terms (account-level)"], ["3", "versions of your onboarding, one per ad"], ["1", "paywall every install meets today"]]}, "walk": {"captions": {"ad": "Three people arrive: your YouTube ad, “sign docs”, “agreement”.", "welcome": "Each welcome repeats what brought them in.", "ask": "One question, a different one for each.", "do": "A first win before any price: an invite back signed, a signature, the signers set.", "paywall": "Three paywalls, each naming what they came to do.", "signup": "The account comes last, to save what they made.", "home": "Their first document, waiting in Documents."}, "taps": {"do-b": [".sn-sig", ".sn-edfoot [data-go]"]}, "skip": ["today"], "end": "Five ideas, three versions, your design and your prices.", "button": "▶ Play the walkthrough in the phones"}, "heroWalk": "▶ Watch it play in the phones"}</script>
-<script type="application/json" id="junoData">{"month": "November 2026", "icon": "assets/brand/appstore-icon.jpg", "logo": {"src": "assets/crop/wordmark.png", "mask": true, "ar": 3.5, "h": 22}, "demo": "https://adapty.io/schedule-demo/", "asa": {"name": "SignNow: e-Signature app", "sub": "Sign documents &amp; PDF forms", "icon": "assets/brand/appstore-icon.jpg", "shots": ["assets/brand/appstore-shot-1.jpg", "assets/brand/appstore-shot-3.jpg", "assets/brand/appstore-shot-2.jpg"]}, "hero": {"h1": ["“Close deals with signNow.”", "The app opens on “Upgrade Your Plan”."], "lead": "A YouTube viewer, someone searching “sign docs”, someone searching “agreement”: all three create an account, verify their email and meet the same paywall before a single document. Here is the app opening each one its own way, in your design, at your prices.", "byline": "Built from your iOS flow as you recorded it (Nov 2026) and as ScreensDesign recorded it in the US (Oct 2026), your US App Store listing and in-app purchases, your YouTube ad and US Apple Ads search data for 16 Oct–16 Nov 2026. We found no active signNow ads in the Meta Ad Library.", "open": "Open the three versions", "tiles": ["#0077d1", "#5ca5dd", "#31b372", "#fea22f", "#fde2bf", "#076dbd", "#cfe4f4"], "words": ["Sign Myself", "Invite to Sign", "sign docs", "agreement", "Close deals", "Templates", "stay in the loop", "Signed", "Waiting for Others", "Sample Document"]}, "stats": [["★ 4.5", "from 18,282 ratings on the US App Store"], ["6M+", "people sign with SignNow, as your listing says"], ["30", "US search terms your Apple Ads show on, 16 Oct–16 Nov 2026"], ["0", "documents a new user sees before the paywall today"]], "what": {"h2": ["We went through SignNow on the App Store, in the app and in your ads,", "then rebuilt the first screens around three of them."], "p": "Adapty powers subscriptions for 30,000+ apps, so we see what moves purchases across the market. Nearly 500 apps build their paywalls and onboarding in Adapty Flow Builder, and millions of dollars in subscription revenue pass through it every month. For SignNow we looked at the gap between what brought someone in and the first thing the app asks of them.", "launchTitle": "A new user’s first launch today", "launch": [["Sees your YouTube ad or your Apple Ads search ad, and installs.", "Kept."], ["Lands on “Secure online signing, wherever it happens”: email, password, “Create Free Account”, then “Verify Your Email”.", "Kept, and moved after the first signature."], ["Meets “Upgrade Your Plan”: Business at $95.99 a year with 7 days free, “Pay annually -60% OFF”, “Start my 7-day Free Trial”.", "Kept: plans, trial, button. Now it names what they came to do."], ["Closes it and finds an empty Documents screen: “No Active Plan”, “Sign Myself”, “Invite to Sign”.", "Kept, and now their first document is in it."]], "notes": [["Your design, not ours", "Your #0077d1 buttons, your green selected-plan card (#e0f3e6 with its #31b372 check), the #fea22f “-60% OFF” badge, the peach highlight and sky-blue header of your sign-up screen, your lock-screen art, your editor’s TOOLS / FIELDS and your Documents tab bar. Only the order, one question and the words change."], ["Your prices, as published", "Business at $95.99 a year with a 7-day free trial and $19.99 a month, from the In-App Purchases on your US App Store listing; $7.99 a month and “Save 60%” are that arithmetic. Your recording was made on a Vietnamese storefront, so we didn’t convert its VND prices. Premium yearly isn’t in the public list, so we left it out."], ["You may have tested some of this", "We cannot see your experiment history. Tell us what you already ran and we will go deeper on the rest."]]}, "ads": {"kick": "Your ads", "h2": ["One YouTube ad, 30 searches.", "All of them open on the same paywall."], "p": "The ad we see most is a 23-second YouTube video that links to the App Store. We found no active signNow or airSlate ads in the Meta Ad Library. In the US, between 16 October and 16 November 2026, your Apple Ads showed on 30 search terms: signing words (“sign”, “sign docs”, “signatures”), documents (“agreement”), other apps’ names, your own, and a few words from legal pages. The YouTube ad and two searches each get their own version of the app in the prototype.", "tabs": [{"tab": "YouTube ad", "n": 1, "unit": "video ad", "kind": "video", "chan": "YouTube · video ad · running", "src": "assets/ads/yt-ad.mp4", "poster": "assets/ads/yt-2.jpg", "frames": ["assets/ads/yt-2.jpg", "assets/ads/yt-6.jpg", "assets/ads/yt-10.jpg", "assets/ads/yt-16.jpg"], "hook": "“Save time and money. Close deals with signNow.”", "meta": "YouTube · 23 s · running since 30 Aug 2025 · the most-seen creative in the ads we can see · ends on “Download signNow on the App Store”", "inad": "Your app on a phone: a contract with a Send button, a finger signing, the Documents list moving to “Signed”, a lock screen notification, then your App Store page.", "promise": "Send it, get it signed in minutes, and know when it’s done.", "today": "Sign-up, “Verify Your Email”, then “Upgrade Your Plan”, before any document.", "rebuild": "Version A asks “What do you send for signature?”, sends a first “Sales contract” to a sample client and shows it come back opened, then signed, with your own “Your document has been signed!”. The paywall leads with that art: “Get every sales contract signed from your phone”.", "flow": "a"}, {"tab": "“sign docs”", "term": "sign docs", "n": 1, "unit": "search term", "kind": "search", "chan": "Apple Ads · search ad", "hook": "“sign docs”", "meta": "Apple Ads · US · about 59% share of voice, popularity 5.41 · also “sign” (51%, popularity 21.15), “signs” (58%), “signatures” (83%), “e-signature app” (45%) · account-level, 16 Oct–16 Nov 2026", "inad": "Your search ad: your icon, “SignNow: e-Signature app”, “Sign documents &amp; PDF forms” and your App Store screenshots.", "promise": "Sign the document I have, now.", "today": "The same sign-up, email check and paywall as every other install.", "rebuild": "Version B asks where their document is (your own Load from Device, Cloud, Camera), then opens your Sample Document to sign with a finger: signed and dated in ten seconds. The paywall shows the free week as Today, Day 6, Day 7.", "flow": "b"}, {"tab": "“agreement”", "term": "agreement", "n": 1, "unit": "search term", "kind": "search", "chan": "Apple Ads · search ad", "hook": "“agreement”", "meta": "Apple Ads · US · about 63% share of voice, popularity 15.34 · also “agreements” (12%), “signed” (33%), “digitally” (18%) · account-level, 16 Oct–16 Nov 2026", "inad": "The same search ad, whatever they typed.", "promise": "An agreement, signed by everyone, that holds up.", "today": "The same sign-up, email check and paywall as every other install.", "rebuild": "Version C asks who needs to sign, sets up the signers and the signing order, and shows ESIGN, UETA, eIDAS and the audit trail from your listing. The paywall leads with your laurels, 4.5 stars and Barbara Cerullo’s review.", "flow": "c"}], "more": "Also on your list, with no phone of their own: your own name “signnow” at about 97%, a strong brand defence; other apps’ names like “jotform” (47%), “sign ai - ai signature maker” (44%) and “sign documents - pdf signature” (56%), which would open version B; and words from legal pages with a high share, like “terms_of_use” and “termsofuse” (80%), “section” (64%), “eula” (21%): worth checking what those installs earn. Counts are search terms, not spend; the data is account-level, so it may include SignNow Private Cloud.", "foot": "Adapty can pick the flow at first open from the YouTube campaign or the Apple Ads keyword the install came from, after a one-time SDK setup. A new ad gets its own first screen the same day, with no app release."}, "outcome": {"h2": ["Five ideas,", "one app that lets them sign before it asks."], "k": "Run together", "t": "Three ads, three first launches, a signature before the price", "nums": [["+20%", "CR to purchase"], ["+15%", "ARPU"]]}, "proto": {"kick": "Prototype · one version per ad", "h1": ["Three ads.", "Three first launches."], "sub": "One install from your YouTube ad, one from “sign docs”, one from “agreement”. Same app, same prices. Tap the steps, or tap inside any phone."}, "kept": ["Kept: your Sample Document, editor fields and Sign Myself.", "Kept: your green selected-plan card, as the answer cards.", "Kept: your sign-up screen, now after the first signature.", "Kept: $95.99 a year with 7 days free, $19.99 a month, “Start my 7-day Free Trial”.", "Kept: your laurels and Barbara Cerullo’s review, moved up."], "_tiles": ["#498cbe", "#7da6c5", "#65ae88", "#daa562", "#d9c9b4", "#4d86b3", "#bfcad2"]}</script>
+<script type="application/json" id="motionData">{"hero": {"words": ["Close deals", "sign docs", "agreement", "Sign Myself", "Invite to Sign", "stay in the loop", "Signed", "Templates", "Sample Document"], "icon": "assets/brand/appstore-icon.jpg", "stats": [["★ 4.5", "from 18K ratings on the US App Store"], ["30", "US Apple Ads search terms (account-level)"], ["3", "versions of your onboarding, one per ad"], ["1", "paywall every install meets today"]]}, "walk": {"captions": {"ad": "Three installs: your YouTube ad, “sign docs”, “agreement”.", "welcome": "Each first screen keeps its ad’s promise. No account form yet.", "ask": "One question, a different one per source.", "do": "A first win before any price: a contract back signed, a signature, the signers set.", "paywall": "Each paywall names the job they came to do.", "signup": "The account comes last, to save what they made.", "home": "Their first document, waiting in Documents."}, "taps": {"do-b": [".sn-sig", ".sn-edfoot [data-go]"]}, "skip": ["today"], "end": "Three first launches, your design, your prices.", "button": "▶ 30-second walkthrough", "first": 3600, "dwell": 3000, "endMs": 3200}, "heroWalk": "▶ Watch it play in the phones"}</script>
+<script type="application/json" id="junoData">{"month": "November 2026", "icon": "assets/brand/appstore-icon.jpg", "logo": {"src": "assets/crop/wordmark.png", "mask": true, "ar": 3.5, "h": 22}, "demo": "https://adapty.io/schedule-demo/", "asa": {"name": "SignNow: e-Signature app", "sub": "Sign documents &amp; PDF forms", "icon": "assets/brand/appstore-icon.jpg", "shots": ["assets/brand/appstore-shot-1.jpg", "assets/brand/appstore-shot-3.jpg", "assets/brand/appstore-shot-2.jpg"]}, "hero": {"h1": ["Two channels, three promises.", "One account form answers all of them."], "lead": "Your YouTube ad says “Close deals with signNow”. Your Apple Ads answer “sign docs” and “agreement”. All three installs meet the same account form, email check and “Upgrade Your Plan”. Here is a first launch that keeps each promise, in your design, at your prices.", "byline": "Built from your iOS flow as we recorded it in November 2026, your App Store listing, your YouTube ad and the Apple Ads searches you show on in the US.", "open": "Open the three flows", "tiles": ["#0077d1", "#5ca5dd", "#31b372", "#fea22f", "#fde2bf", "#076dbd", "#cfe4f4"], "words": ["Sign Myself", "Invite to Sign", "sign docs", "agreement", "Close deals", "Templates", "stay in the loop", "Signed", "Waiting for Others", "Sample Document"]}, "stats": [["★ 4.5", "from 18K ratings on the US App Store"], ["59%", "share of voice on your Apple Ads search “sign docs”, in the US"], ["3", "promises with a first launch of their own: your YouTube ad, “sign docs”, “agreement”"], ["1", "first launch every install meets today, whatever the ad"]], "what": {"h2": ["We watched your ad and your searches the way a new user does,", "then rebuilt what happens after the tap."], "p": "Adapty powers subscriptions for 30,000+ apps, so we see what moves purchases across the market. Nearly 500 apps build their paywalls and onboarding in Adapty Flow Builder, and millions of dollars in subscription revenue pass through it every month. For SignNow we looked at the gap between what each ad promises and what the first launch says.", "launchTitle": "Your first launch today", "launch": [["“Secure online signing, wherever it happens”: email, password, Apple, Google, then “Verify Your Email”.", "Kept; it moves behind the plan."], ["“Upgrade Your Plan”: Business and Premium, 7 days free trial included, a Pay annually switch.", "Kept, now naming the job."], ["Apple’s purchase sheet for “SignNow Business, free trial”.", "Kept."], ["Documents: “No Active Plan”, Sign Myself and Invite to Sign.", "Kept, with their first document already in it."]], "notes": [["Your design, not ours", "Your #0077D1 blue button, the peach highlight and sky-blue header of your sign-up screen, the green plan card with its check, the orange saving pill and the lock-screen art of your paywall. Only the order of the screens and the words at their top change."], ["Your prices, as published", "Business at $95.99 a year with 7 days free, or $19.99 a month, as your US App Store listing shows them. $95.99 ÷ 12 = $8.00 a month; $19.99 × 12 = $239.88, so the year is 60% less. No invented discount, no timer. Premium yearly isn’t in the public list, so the prototype shows Business only."], ["You may have tested some of this", "We cannot see your experiment history. Tell us what you already ran and we will go deeper on the rest."]]}, "ads": {"kick": "Your ads on YouTube and Apple Ads", "h2": ["Two channels running today.", "Three different promises."], "p": "Your 23-second YouTube video is the ad we see shown most, and it is not new: it has run since 30 August 2025. On Apple Ads you show on 30 search terms in the US, from one-word terms like “sign” and “agreement” to “sign docs”, the search that says what the person wants to do. We found no active signNow ads in the Meta Ad Library.", "tabs": [{"tab": "YouTube ad", "n": 1, "unit": "video ad", "kind": "video", "chan": "YouTube · shown most", "src": "assets/ads/yt-ad.mp4", "poster": "assets/ads/yt-2.jpg", "frames": ["assets/ads/yt-2.jpg", "assets/ads/yt-6.jpg", "assets/ads/yt-10.jpg", "assets/ads/yt-16.jpg"], "hook": "“Save time and money. Close deals with signNow.”", "meta": "YouTube · 23 s · running since 30 August 2025 · the creative shown most in the ads we can see", "inad": "Your app on a phone: a contract with a Send button, a finger signing, the Documents list moving to “Signed”, a lock screen notification, then your App Store page.", "promise": "Send it, get it signed, close the deal.", "today": "“Secure online signing, wherever it happens”, an account form and an email check, then “Upgrade Your Plan”.", "rebuild": "“Close deals with SignNow, wherever they happen” first; one question, what they send; a sample sales contract sent, opened and signed before any price; the paywall opens on your “Your document has been signed!” art, the year with its 7 days free first.", "flow": "a", "sub": "Ends on “Download signNow on the App Store”"}, {"tab": "“sign docs”", "term": "sign docs", "n": 1, "unit": "search term", "kind": "search", "chan": "Apple Ads · search", "hook": "“sign docs”", "meta": "Apple Ads · search term · US · popularity 5.41 · account-level", "inad": "Your listing as the top result: your icon, “SignNow: e-Signature app”, “Sign documents &amp; PDF forms” and your first App Store screenshots.", "promise": "Sign a document, now.", "today": "The same account form and the same “Upgrade Your Plan” as the YouTube install.", "rebuild": "“Sign your document in just a few taps” first; one question, where the document is; your Sample Document signed with a finger before any price; the paywall shows the free week day by day.", "flow": "b", "sub": "About 59% share of voice, 16 October to 16 November 2026"}, {"tab": "“agreement”", "term": "agreement", "n": 1, "unit": "search term", "kind": "search", "chan": "Apple Ads · search", "hook": "“agreement”", "meta": "Apple Ads · search term · US · popularity 15.34 · account-level", "inad": "The same search ad as for “sign docs”: your icon, your name and the same first screenshots, whatever they typed.", "promise": "An agreement both sides sign, that holds up.", "today": "The same account form and the same “Upgrade Your Plan” as the YouTube install.", "rebuild": "“Get your agreement signed, legally binding” first; one question, who signs; the signers and the signing order set, with ESIGN, UETA and eIDAS; the paywall leads with your 4.5 stars and Barbara Cerullo’s review.", "flow": "c", "sub": "About 63% share of voice, 16 October to 16 November 2026"}], "more": "Also on your list, with no phone of their own: your own name “signnow” at about 97%, a strong brand defence; other apps’ names like “jotform” (47%), “sign ai - ai signature maker” (44%) and “sign documents - pdf signature” (56%), which would open the “sign docs” flow; and words from legal pages with a high share, like “terms_of_use” and “termsofuse” (80%), “section” (64%), “eula” (21%): worth checking what those installs earn. Counts are search terms, not spend; the data is account-level, so it may include SignNow Private Cloud.", "foot": "Adapty picks the flow at first open from the source the install came from: the Apple Ads keyword from Apple, the YouTube campaign through the attribution you already run. Installs from your other searches keep today’s first launch until you choose to split them."}, "outcome": {"h2": ["Five ideas,", "one first launch per channel."], "k": "Run together", "t": "Every ad’s promise kept on the screen it pays on", "nums": [["+10–20%", "purchases"], ["+10–15%", "ARPU"]], "cap": "Adapty’s range for a structural change to the flow. They overlap, so they don’t add up: each flow is its own A/B test against today’s first launch, judged on what the installs from that ad or search earn.", "img": "assets/hero/paywall-a.png", "do": [["Do this week", "Move the account form behind the plan", "One change in the order of your screens, built in Flow Builder, live without an app release. Today sign-up and “Verify Your Email” come before anything else."], ["Then", "One paywall, the source as the variable", "Three sources, one template: the headline, the first benefit and the plan it opens on change with the YouTube campaign or the search term."], ["And measure", "Judge each source on what it earns, not installs", "Adapty reports trials, purchases and revenue for the YouTube campaign, “sign docs” and “agreement” separately, so spend follows the promise that pays."]]}, "proto": {"kick": "Prototype · one first launch per ad", "h1": ["Two channels.", "Three first launches."], "sub": "One install from your YouTube ad, one from the “sign docs” search, one from “agreement”. Same screens, same prices. Tap the steps, or tap inside any phone: install, answer, sign, choose a plan, close it."}, "kept": ["Kept: your Sample Document, your editor fields and Sign Myself.", "Kept: your lock-screen art, your green Business card and your 7 days free.", "Kept: your sign-up form, Continue with Apple and Google, and your terms line, in your blue.", "Kept: $95.99 a year with 7 days free, $19.99 a month and “Start my 7-day Free Trial”.", "Kept: Barbara Cerullo’s review, word for word, and your laurels."], "langNote": {"fr": "Phones in French, translated by us; prices from your French App Store. Barbara Cerullo’s review stays word for word.", "es": "Phones in Spanish, translated by us; prices from your Spanish App Store. Barbara Cerullo’s review stays word for word."}, "_tiles": ["#498cbe", "#7da6c5", "#65ae88", "#daa562", "#d9c9b4", "#4d86b3", "#bfcad2"]}</script>
 </body>
 </html>
